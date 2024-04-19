@@ -53,8 +53,13 @@ class UsersController < ApplicationController
     @user.destroy!
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User #{@user.email} deleted." }
-      format.json { head :no_content }
+      if session[:current_user_id] = @user.id
+        format.html { redirect_back_or_to users_path, notice: "User #{@user.email} deleted." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to root_path, notice: "Goodbye!" }
+        format.json { head :no_content }
+      end
     end
   end
 

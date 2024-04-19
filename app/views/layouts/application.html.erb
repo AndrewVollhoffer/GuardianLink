@@ -17,7 +17,9 @@
     <%= render "layouts/navbar" %>
 
     <% if notice %>
-      <p style="color: green"><%= notice %></p>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button><%= notice %></p>
+    </div>
     <% end %>
 
     <%= yield %>
