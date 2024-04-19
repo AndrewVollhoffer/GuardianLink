@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   post 'log-in', to: 'sessions#create'
   delete 'log-out', to: 'sessions#destroy'
 
-  get "users/home"
+  get "users/index"
 
   # Defines the root path route ("/")
-  root "users#index"
+  root "users#home"
 end
