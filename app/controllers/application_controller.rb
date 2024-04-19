@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
+
     before_action :current_user
 
-    private 
+    private
 
     def current_user
         @_current_user ||= session[:current_user_id] &&
