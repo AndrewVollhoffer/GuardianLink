@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   get "users/home"
 
   # Defines the root path route ("/")
-  root "users#home"
+  root "users#index"
 end
