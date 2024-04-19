@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+<h1> Log In </h1>
+
+<%= form_with url: log_in_path  do |form| %>
+  
+  <p><%= form.label :email %></p>
+  <p><%= form.email_field :email, required: true %></p>
+
+  <p><%= form.label :password %></p>
+  <p><%= form.password_field :password, required: true %></p>
+    
+  <p><%= form.submit 'Log In' %></p>
+    
+<% end %>

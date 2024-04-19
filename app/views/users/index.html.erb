@@ -1,14 +1,37 @@
 <p style="color: green"><%= notice %></p>
 
+<% if @_current_user %>
+  <%= button_to 'Log Out', log_out_path(@_current_user), method: :delete %>
+<%  else %>
+  <%= link_to 'Log In', log_in_path  %>
+  <%= link_to 'Sign Up', new_user_path %>
+<% end %>
+
 <h1>Users</h1>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+<div id="users_table">
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Last Update</th>
+        <th></th>
+        <th></th>
+      </tr>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td> <%= user.email %> </td>
+          <td> <%= user.password %> </td>
+          <td> <%= user.updated_at %> </td>
+          <td> <%= link_to "Show", user %> </td>
+          <td> <%= button_to 'Delete', user, method: :delete %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
+<br>
 <%= link_to "New user", new_user_path %>
