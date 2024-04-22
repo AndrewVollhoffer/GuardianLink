@@ -1,9 +1,12 @@
 <p>Email: <%= @user.email %> </p>
-<p>Password: <%= @user.password %> </p>
+<p>Password: <%= @user.password_digest %> </p>
+<p>First name: <%= @user.first_name %> </p>
+<p>Last name: <%= @user.last_name %> </p>
+<p>Hours available/week: <%= @user.hours %> </p>
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
+  <%= link_to "Edit Me", edit_user_path(@user) %> |
+  <%= link_to "Back", users_path %>
 
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <%= button_to "Delete Me", @user, method: :delete %>
 </div>

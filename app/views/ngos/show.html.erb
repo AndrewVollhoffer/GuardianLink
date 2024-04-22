@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @ngo %>
+
+<div>
+  <%= link_to "Edit this ngo", edit_ngo_path(@ngo) %> |
+  <%= link_to "Back to ngos", ngos_path %>
+
+  <%= button_to "Destroy this ngo", @ngo, method: :delete %>
+</div>

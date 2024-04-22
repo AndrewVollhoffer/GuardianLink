@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ngos
   resources :users
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,8 +9,6 @@ Rails.application.routes.draw do
   get 'log-in', to: 'sessions#new'
   post 'log-in', to: 'sessions#create'
   delete 'log-out', to: 'sessions#destroy'
-
-  get "users/index"
 
   # Defines the root path route ("/")
   root "users#home"

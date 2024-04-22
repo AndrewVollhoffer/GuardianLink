@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Ngos</h1>
+
+<div id="ngos">
+  <% @ngos.each do |ngo| %>
+    <%= render ngo %>
+    <p>
+      <%= link_to "Show this ngo", ngo %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New ngo", new_ngo_path %>
