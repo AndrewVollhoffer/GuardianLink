@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_one :user_profile
+
     has_secure_password
 
     validates_presence_of :email

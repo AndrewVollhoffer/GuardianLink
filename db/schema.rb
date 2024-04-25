@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_22_172518) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_24_141306) do
   create_table "ngos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "hours"
+    t.text "bio"
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -22,9 +33,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_172518) do
     t.string "email"
     t.string "password_digest"
     t.boolean "admin"
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "hours"
   end
 
 end

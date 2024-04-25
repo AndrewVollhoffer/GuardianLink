@@ -8,8 +8,8 @@
         </a>
          <ul class="dropdown-menu">
             <li> 
-                <% if @_current_user %>
-                  <%= link_to 'Profile', user_path(@_current_user.id) %>
+                <% if user_signed_in? %>
+                  <%= link_to 'Profile', user_path(@_current_user) %>
                   <%= button_to 'Log Out', log_out_path(@_current_user), method: :delete %>
                 <%  else %>
                   <%= link_to 'Log In', log_in_path  %>

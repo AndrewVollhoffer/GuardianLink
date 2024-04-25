@@ -24,23 +24,9 @@
       <%= form.label :password_confirmation %>
       <%= form.password_field :password_confirmation, placeholder: "Password required" %>
     </p>
-  </div>
-  <div>
-      <p>
-        <%= form.label :first_name %>
-        <%= form.text_field :first_name %>
-      </p>
-      <p>
-        <%= form.label :last_name %>
-        <%= form.text_field :last_name %>
-      </p>
-      <p>
-        <%= form.label :hours %>
-        <%= form.number_field :hours %>
-      </p>
-      <p>
-        <%= form.submit %>
-      </p>
+    <p>
+      <%= form.submit %>
+    </p>
   </div>
 
 <% end %>
