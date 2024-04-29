@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    @user_profile = UserProfile.new(@user.id)
 
     respond_to do |format|
       if @user.save
@@ -55,7 +54,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if session[:current_user_id] = @user.id
-        format.html { redirect_back_or_to users_path, notice: "User #{@user.email} deleted." }
+        format.html { redirect_to root_path, notice: "User #{@user.email} deleted." }
         format.json { head :no_content }
       else
         format.html { redirect_to root_path, notice: "Goodbye!" }
@@ -72,6 +71,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :hours, :bio)
     end
 end
