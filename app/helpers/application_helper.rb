@@ -9,5 +9,4 @@ module ApplicationHelper
   def current_user
     return @_current_user
   end
-
 end
