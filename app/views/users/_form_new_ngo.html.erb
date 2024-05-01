@@ -1,7 +1,8 @@
+<!-- Sets the form type for users and displays errors -->
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this business from being saved:</h2>
 
       <ul>
         <% user.errors.each do |error| %>
@@ -13,7 +14,7 @@
 
   <div>
     <p>
-      <%= form.label :email %>
+      <%= form.label "Point of contact email: " %>
       <%= form.email_field :email, placeholder: "123@email.com" %>
     </p>
     <p>
@@ -25,8 +26,9 @@
       <%= form.password_field :password_confirmation, placeholder: "Password required" %>
     </p>
     <p>
-      <%= form.submit %>
+      <%= form.hidden_field :ngo, value: true %>
+    <p>
+      <%= form.submit "Create Organization" %>
     </p>
-  </div>
-
+    </div>
 <% end %>

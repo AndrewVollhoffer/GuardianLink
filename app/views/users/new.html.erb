@@ -1,6 +1,8 @@
-<h1>New user</h1>
-
-<%= render "form_new", user: @user %>
+<% if params[:q] != "ngo" %>
+  <%= render "form_new_user", user: @user %>
+<% else %>
+  <%= render "form_new_ngo", user: @user %>
+<% end %>
 
 <br>
 

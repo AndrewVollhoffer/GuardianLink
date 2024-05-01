@@ -31,6 +31,6 @@
 
     <div>
         <h1 style="text-align: center">JOIN NOW</h1>
-        <%= link_to "Join as Specialist", new_user_path %> | <%= link_to "Join as Business", "#" %>
+        <%= link_to "Join as Specialist", new_user_path(q: "user") %> | <%= link_to "Join as Business", new_user_path(q: "ngo" ) %>
     </div>
 </div>

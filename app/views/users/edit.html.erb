@@ -1,10 +1,13 @@
-<h1>Editing user</h1>
+<h1>Account Details</h1>
 
-<%= render "form_edit", user: @user %>
+<% if @user.ngo != true %>
+  <%= render "form_edit_user", user: @user %>
+<% else %>
+  <%= render "form_edit_ngo", user: @user %>
+<% end %>
 
 <br>
 
 <div>
-  <%= link_to "Profile Page", @user %> |
-  <%= link_to "Back", users_path %>
+  <%= link_to "Back", @user %>
 </div>

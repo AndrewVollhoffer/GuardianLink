@@ -1,0 +1,33 @@
+<!-- Sets the form type for users and displays errors -->
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <p>
+      <%= form.label "#{:email}:" %>
+      <%= form.email_field :email, placeholder: "123@email.com" %>
+    </p>
+    <p>
+      <%= form.label "#{:password}:" %>
+      <%= form.password_field :password, placeholder: "Password required" %>
+    </p>
+    <p>
+      <%= form.label "#{:password_confirmation}:" %>
+      <%= form.password_field :password_confirmation, placeholder: "Password required" %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  </div>
+  
+<% end %>

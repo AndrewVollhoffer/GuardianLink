@@ -1,13 +1,11 @@
-<p>Email: <%= @user.email %> </p>
-<p>First name: <%= current_user.first_name %> </p>
-<p>Last name: <%= current_user.last_name %> </p>
-<p>Hours available/week: <%= current_user.hours %> </p>
-<p>LinkedIn Page: <%= current_user.linkedin %> </p>
-<p>Bio: <%= current_user.bio %> </p>
+<h1>Account Details</h1>
 
-<div>
-  <%= link_to "Edit Profile", edit_user_path(@user) %> |
-  <%= link_to "Back", users_path %>
+<% if @user.profile_photo.attached? %>
+  <p> <%= image_tag(@user.profile_photo, size: "50", alt: "pfp") %> </p>
+<% end %>
 
-  <%= button_to "Delete Me", @user, method: :delete, form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} } %>
-</div>
+<% if @user.ngo != true %>
+  <%= render "show_user" %>
+<% else %>
+  <%= render "show_ngo" %>
+<% end %>

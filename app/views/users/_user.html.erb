@@ -1,2 +1,6 @@
 <div id="<%= dom_id user %>">
 </div>
+
+<% if user.profile_photo.attached? %>
+  <image src="<%= (url_for(user.profile_photo))%>">
+<% end %>
