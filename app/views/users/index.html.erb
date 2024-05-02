@@ -1,32 +1,20 @@
-<h1 style="text-align: center">Users</h1>
-
-<div id="users_table">
-  <table class="table table-striped table-hover">
-    <thead class="table table-grey">
+<div>
+  <table class="table">
+    <thead>
       <tr>
-        <th>Email</th>
-        <th>Business</th>
-        <th>Last Update</th>
-        <th></th>
-        <th></th>
+        <th><h1 style="text-align: center">Users</h1></th>
+        <th><h1 style="text-align: center">Businesses</h1></th>
       </tr>
-    <tbody class="table-group-divider">
-      <% @users.each do |user| %>
-        <tr>
-          <% if user.admin?%> 
-            <td> <strong><u> <%= user.email %> </strong></u> </td>
-          <% else %>
-            <td> <%= user.email %> </td>
-          <% end %> </td>
-          <td> <%= user.ngo %> </td>
-          <td> <%= user.updated_at %> </td>
-          <td> <%= link_to "Show", user %> </td>
-          <td> <%= button_to 'Delete', user, method: :delete %> </td>
-        </tr>
-      <% end %>
-    </tbody>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= render "index_users" %></td>
+        <td><%= render "index_ngos" %></td>
+      </tr>
+    <tbody>
   </table>
 </div>
 
 <br>
-<%= link_to "New user", new_user_path %>
+<%= link_to "New user", new_user_path(q: "user") %>
+<%= link_to "New business", new_user_path(q: "ngo") %>

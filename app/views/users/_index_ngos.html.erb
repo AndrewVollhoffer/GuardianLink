@@ -1,0 +1,27 @@
+<div id="users_table">
+  <table class="table table-striped table-hover">
+    <thead class="table table-grey">
+      <tr>
+        <th>POC</th>
+        <th>Last Update</th>
+        <th></th>
+        <th></th>
+      </tr>
+    <tbody class="table-group-divider">
+      <% @users.each do |user| %>
+        <tr>
+          <% if user.ngo %>
+            <% if user.admin?%> 
+              <td> <strong><u> <%= user.email %> </strong></u> </td>
+            <% else %>
+              <td> <%= user.email %> </td>
+            <% end %> </td>
+            <td> <%= user.updated_at %> </td>
+            <td> <%= link_to "Show", user %> </td>
+            <td> <%= button_to 'Delete', user, method: :delete %> </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :authorize_user, only: [:update, :destroy]
 
   # GET /users or /users.json
   def index
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        session[:current_user_id] = @user.id
+        if current_user.admin == false || current_user.admin == nil then session[:current_user_id] = @user.id end
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -64,6 +65,7 @@ class UsersController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -73,5 +75,12 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :profile_photo,
         :first_name, :last_name, :hours, :linkedin, :bio, :ngo)
+    end
+
+    # Authorize the current user in session to update or delete only themselves.
+    def authorize_user
+      unless @user == current_user || current_user.admin?
+        render json: { error: 'Not Authorized' }, status: :unauthorized
+      end
     end
 end

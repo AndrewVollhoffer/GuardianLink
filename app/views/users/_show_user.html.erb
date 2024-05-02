@@ -6,10 +6,3 @@
   <p> <%= link_to "LinkedIn Page: #{@user.linkedin}", @user.linkedin, target: "_blank" %> </p>
 <% end %>
 <p>Bio: <%= @user.bio %> </p>
-
-<div>
-  <%= link_to "Edit Profile", edit_user_path(@user) %> |
-  <%= link_to "Back", users_path %>
-
-  <%= button_to "Delete Me", @user, method: :delete, form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} } %>
-</div>

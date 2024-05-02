@@ -4,8 +4,19 @@
   <p> <%= image_tag(@user.profile_photo, size: "50", alt: "pfp") %> </p>
 <% end %>
 
-<% if @user.ngo != true %>
-  <%= render "show_user" %>
-<% else %>
+
+
+<% if @user.ngo? %>
   <%= render "show_ngo" %>
+<% else %>
+  <%= render "show_user" %>
 <% end %>
+
+<% if current_user == @user || current_user.admin? %>
+  <div>
+    <%= link_to "Edit Profile", edit_user_path(@user) %>
+    <%= button_to "Delete Me", @user, method: :delete, form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} } %>
+  </div>
+<% end %>
+
+<%= link_to "Back", users_path %>
