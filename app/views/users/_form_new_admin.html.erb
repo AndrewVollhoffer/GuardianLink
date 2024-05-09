@@ -13,11 +13,11 @@
   <% end %>
 
   <div>
-    <h1>Create a new User!</h1>
+    <h1>Create a new Admin!</h1>
   </div>
 
   <br>
-
+  
   <div>
     <p>
       <%= form.label "#{:email}:" %>
@@ -32,7 +32,10 @@
       <%= form.password_field :password_confirmation, placeholder: "Password required" %>
     </p>
     <p>
-      <%= form.submit %>
+      <%= form.hidden_field :admin, value: true %>
+    </p>
+    <p>
+      <%= form.submit "Create Admin" %>
     </p>
   </div>
   

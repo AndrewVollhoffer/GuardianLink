@@ -24,7 +24,8 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <%= "Current user: #{current_user.email}" %>
+      <%= "Current user: #{signed_user.email}" %><br>
+      <%= "Admin: #{signed_user.admin?}" %>
     <% else %>
       <p>Guest session</p>
     <% end %>

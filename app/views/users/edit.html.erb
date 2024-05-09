@@ -1,9 +1,9 @@
 <h1>Account Details</h1>
 
-<% if @user.ngo != true %>
-  <%= render "form_edit_user", user: @user %>
-<% else %>
+<% if @user.ngo == true %>
   <%= render "form_edit_ngo", user: @user %>
+<% else %>
+  <%= render "form_edit_user", user: @user %>
 <% end %>
 
 <br>

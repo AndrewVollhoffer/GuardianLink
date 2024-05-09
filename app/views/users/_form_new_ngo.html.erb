@@ -13,6 +13,12 @@
   <% end %>
 
   <div>
+    <h1>Create a new Business!</h1>
+  </div>
+
+  <br>
+  
+  <div>
     <p>
       <%= form.label "Point of contact email: " %>
       <%= form.email_field :email, placeholder: "123@email.com" %>
@@ -27,6 +33,7 @@
     </p>
     <p>
       <%= form.hidden_field :ngo, value: true %>
+    </p>
     <p>
       <%= form.submit "Create Organization" %>
     </p>

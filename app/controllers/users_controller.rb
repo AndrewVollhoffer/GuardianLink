@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def action
+    @users = User.all
+  end
+
   # GET /users/1 or /users/1.json
   def show
   end
@@ -26,9 +30,14 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        if current_user.admin == false || current_user.admin == nil then session[:current_user_id] = @user.id end
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
+        if signed_user.admin?
+          format.html { redirect_to users_path, notice: "User was successfully created." }
+          format.json { render :show, status: :created, location: @user }
+        else
+          session[:current_user_id] = @user.id
+          format.html { redirect_to @user, notice: "Successfully created your profile!" }
+          format.json { render :show, status: :created, location: @user }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -51,15 +60,17 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy!
-
     respond_to do |format|
-      if session[:current_user_id] = @user.id
-        format.html { redirect_to root_path, notice: "User #{@user.email} deleted." }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to root_path, notice: "Goodbye!" }
-        format.json { head :no_content }
+      if session[:current_user_id] = @user.id || signed_user.admin?
+        @user.destroy!
+        if helpers.current_user.id == 0
+          session[:current_user_id] = signed_user.id
+          format.html { redirect_to users_path, notice: "User #{@user.email} deleted." }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to root_path, notice: "Goodbye!" }
+          format.json { head :no_content }
+        end
       end
     end
   end
@@ -74,12 +85,12 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :profile_photo,
-        :first_name, :last_name, :hours, :linkedin, :bio, :ngo)
+        :first_name, :last_name, :hours, :linkedin, :bio, :ngo, :admin)
     end
 
-    # Authorize the current user in session to update or delete only themselves.
+    # Authorize the current user or any admin in session to update or delete only themselves.
     def authorize_user
-      unless @user == current_user || current_user.admin?
+      unless @user == signed_user || signed_user.admin?
         render json: { error: 'Not Authorized' }, status: :unauthorized
       end
     end

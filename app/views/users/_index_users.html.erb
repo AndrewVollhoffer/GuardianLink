@@ -11,14 +11,16 @@
       <% @users.each do |user| %>
         <tr>
           <% if !user.ngo %>
-            <% if user.admin?%> 
+            <% if user.admin? %> 
               <td> <strong><u> <%= user.email %> </strong></u> </td>
             <% else %>
               <td> <%= user.email %> </td>
             <% end %> </td>
             <td> <%= user.updated_at %> </td>
             <td> <%= link_to "Show", user %> </td>
-            <td> <%= button_to 'Delete', user, method: :delete %> </td>
+            <% if user.id != 0  %>
+              <td> <%= button_to 'Delete', user, method: :delete %> </td>
+            <% end %>
           <% end %>
         </tr>
       <% end %>

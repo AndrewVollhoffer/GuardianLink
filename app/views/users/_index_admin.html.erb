@@ -1,0 +1,21 @@
+<div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th><h1 style="text-align: center">Users</h1></th>
+          <th><h1 style="text-align: center">Businesses</h1></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= render "index_users" %></td>
+          <td><%= render "index_ngos" %></td>
+        </tr>
+      <tbody>
+    </table>
+  </div>
+
+  <br>
+  <%= link_to "New User", new_user_path(q: "user") %>
+  <%= link_to "New Business", new_user_path(q: "ngo") %>
+  <%= link_to "New Admin", new_user_path(q: "admin") %>

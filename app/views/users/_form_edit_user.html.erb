@@ -13,20 +13,12 @@
 
   <div>
     <p>
-      <%= form.label :profile_photo %>
+      <%= form.label "Profile photo:" %>
       <%= form.file_field :profile_photo %>
     </p>
     <p>
       <%= form.label :email %>
-      <%= form.email_field :email, value: @user.email %>
-    </p>
-    <p>
-      <%= form.label :password %>
-      <%= form.password_field :password, placeholder: "Password required" %>
-    </p>
-    <p>
-      <%= form.label :password_confirmation %>
-      <%= form.password_field :password_confirmation, placeholder: "Password required" %>
+      <%= form.hidden_field :email, value: @user.email %>
     </p>
     <p>
       <%= form.label :first_name %>

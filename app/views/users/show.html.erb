@@ -12,7 +12,7 @@
   <%= render "show_user" %>
 <% end %>
 
-<% if current_user == @user || current_user.admin? %>
+<% if signed_user == @user || signed_user.admin? %>
   <div>
     <%= link_to "Edit Profile", edit_user_path(@user) %>
     <%= button_to "Delete Me", @user, method: :delete, form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} } %>
