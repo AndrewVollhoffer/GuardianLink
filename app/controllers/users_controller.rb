@@ -13,6 +13,9 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    if helpers.signed_user == @user && !helpers.profile_completed?(@user)
+      flash[:notice] = "Completed your profile to become searchable!"
+    end
   end
 
   # GET /users/new
@@ -90,7 +93,7 @@ class UsersController < ApplicationController
 
     # Authorize the current user or any admin in session to update or delete only themselves.
     def authorize_user
-      unless @user == signed_user || signed_user.admin?
+      unless @user == helpers.signed_user || helpers.signed_user.admin?
         render json: { error: 'Not Authorized' }, status: :unauthorized
       end
     end

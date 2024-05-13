@@ -4,8 +4,6 @@
   <p> <%= image_tag(@user.profile_photo, size: "50", alt: "pfp") %> </p>
 <% end %>
 
-
-
 <% if @user.ngo? %>
   <%= render "show_ngo" %>
 <% else %>
