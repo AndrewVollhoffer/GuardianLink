@@ -1,5 +1,9 @@
-<% if signed_user.admin? %>
-  <%= render "index_admin" %>
-<% else %>
-  <%= render "index_action" %>
+<% if current_user != nil %>
+  <% if current_user.admin? %>
+    <%= render "index_admin" %>
+  <% elsif current_user.ngo? %>
+    <%= render "user_card" %>
+  <% else %>
+    <%= render "ngo_card" %>
+  <% end %>
 <% end %>

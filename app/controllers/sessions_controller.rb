@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        if helpers.signed_user.admin? == false || helpers.signed_user != nil
+        if current_user.admin? == false ||current_user.admin? == nil || current_user != nil
             session.delete(:current_user_id)
             @_current_user = nil
             redirect_to root_path

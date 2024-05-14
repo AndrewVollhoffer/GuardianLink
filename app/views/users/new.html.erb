@@ -2,7 +2,7 @@
   <%= render "form_new_ngo", user: @user %>
 <% elsif params[:q] == "user" %>
   <%= render "form_new_user", user: @user %>
-<% elsif params[:q] == "admin" && signed_user.admin? %>
+<% elsif params[:q] == "admin" && current_user != nil && current_user.admin? %>
   <%= render "form_new_admin", user: @user %>
 <% end %>
 

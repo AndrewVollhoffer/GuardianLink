@@ -13,8 +13,8 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    if helpers.signed_user == @user && !helpers.profile_completed?(@user)
-      flash[:notice] = "Completed your profile to become searchable!"
+    if current_user == @user && !helpers.profile_completed?(@user)
+      flash[:notice] = "Complete your profile to become searchable!"
     end
   end
 
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        if signed_user.admin?
+        if current_user.admin?
           format.html { redirect_to users_path, notice: "User was successfully created." }
           format.json { render :show, status: :created, location: @user }
         else
@@ -64,10 +64,9 @@ class UsersController < ApplicationController
   # DELETE /users/1 or /users/1.json
   def destroy
     respond_to do |format|
-      if session[:current_user_id] = @user.id || signed_user.admin?
+      if session[:current_user_id] == @user.id || current_user.admin?
         @user.destroy!
-        if helpers.current_user.id == 0
-          session[:current_user_id] = signed_user.id
+        if current_user != nil && current_user.admin?
           format.html { redirect_to users_path, notice: "User #{@user.email} deleted." }
           format.json { head :no_content }
         else
@@ -93,8 +92,9 @@ class UsersController < ApplicationController
 
     # Authorize the current user or any admin in session to update or delete only themselves.
     def authorize_user
-      unless @user == helpers.signed_user || helpers.signed_user.admin?
+      unless @user == current_user || current_user.admin?
         render json: { error: 'Not Authorized' }, status: :unauthorized
       end
     end
+
 end

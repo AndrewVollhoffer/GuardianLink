@@ -6,7 +6,7 @@ module ApplicationHelper
     end
   end
 
-  def signed_user
+  def current_user
     return @_current_user
   end
 
@@ -20,8 +20,8 @@ module ApplicationHelper
         user.attribute_present?(:bio)
         return true
       end
-    elsif
-      if user.ngo?
+    elsif user.ngo?
+      if
         # user.profile_photo.attached? &&
         user.attribute_present?(:first_name) &&
         user.attribute_present?(:bio)

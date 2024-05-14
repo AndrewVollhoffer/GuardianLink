@@ -21,4 +21,5 @@ class User < ApplicationRecord
             errors.add(:profile_photo, "Image must be less than 1MB!")
         end
     end
+
 end

@@ -1,7 +1,9 @@
 <h1>Account Details</h1>
 
 <% if @user.profile_photo.attached? %>
-  <p> <%= image_tag(@user.profile_photo, size: "50", alt: "pfp") %> </p>
+  <%= image_tag(@user.profile_photo, size: "100", alt: "...") %>
+<% else %>
+  <%= image_tag("empty profile picture.jpg", size: "100", alt: "...") %>
 <% end %>
 
 <% if @user.ngo? %>
@@ -10,11 +12,12 @@
   <%= render "show_user" %>
 <% end %>
 
-<% if signed_user == @user || signed_user.admin? %>
+<% if current_user == @user || current_user.admin? %>
   <div>
     <%= link_to "Edit Profile", edit_user_path(@user) %>
     <%= button_to "Delete Me", @user, method: :delete, form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} } %>
+    <%= link_to "Connections", users_path %>
   </div>
+<% else %>
+  <%= link_to "Back", users_path %>
 <% end %>
-
-<%= link_to "Back", users_path %>
