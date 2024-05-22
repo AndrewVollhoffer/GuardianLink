@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_by(email: params[:email])
-        if user != nil && user.authenticate(params[:password])
+        user = User.authenticate_by(email: params[:email], password: params[:password])
+        if user != nil
+            reset_session
             session[:current_user_id] = user.id
             if current_user.admin?
                 redirect_to users_path
@@ -27,4 +28,5 @@ class SessionsController < ApplicationController
             flash[:notice] = 'Goodbye.'
         end
     end
+
 end

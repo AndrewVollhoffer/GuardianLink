@@ -6,6 +6,10 @@
   <%= image_tag("empty profile picture.jpg", size: "100", alt: "...") %>
 <% end %>
 
+<% if current_user != @user %>
+  <%= mail_to "#{@user.first_name} #{@user.last_name} <#{@user.email}>", "Email Me", class: "btn btn-outline-primary" %>
+<% end %>
+
 <% if @user.ngo? %>
   <%= render "show_ngo" %>
 <% else %>
@@ -15,9 +19,12 @@
 <% if current_user == @user || current_user.admin? %>
   <div>
     <%= link_to "Edit Profile", edit_user_path(@user) %>
-    <%= button_to "Delete Me", @user, method: :delete, form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} } %>
-    <%= link_to "Connections", users_path %>
+    <% if @user == current_user || current_user.admin? %>
+      <%= link_to "Change Password", edit_password_path %>
+    <% end %>
   </div>
+    <%= link_to "Connections", users_path %>
+    <%= button_to "Delete Me", @user, method: :delete, form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} } %>
 <% else %>
   <%= link_to "Back", users_path %>
 <% end %>

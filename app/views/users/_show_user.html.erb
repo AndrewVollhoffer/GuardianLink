@@ -3,6 +3,6 @@
 <p>Last name: <%= @user.last_name %> </p>
 <p>Hours available/week: <%= @user.hours %> </p>
 <% if @user.linkedin != nil %>
-  <p> <%= link_to "LinkedIn Page: #{@user.linkedin}", @user.linkedin, target: "_blank" %> </p>
+  <p> <%= link_to "LinkedIn Page", "http://#{@user.linkedin}", target: "_blank" %> </p>
 <% end %>
 <p>Bio: <%= @user.bio %> </p>

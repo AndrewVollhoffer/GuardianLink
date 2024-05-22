@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "GL@guardianlink.com"
+  default from: "notifications@guardianlink.com"
   layout "mailer"
 end

@@ -1,21 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :authorize_user, only: [:update, :destroy]
+  before_action :authorize_user, only: [:update, :destroy ]
 
   # GET /users or /users.json
   def index
     @users = User.all
   end
 
-  def action
-    @users = User.all
-  end
-
   # GET /users/1 or /users/1.json
   def show
-    if current_user == @user && !helpers.profile_completed?(@user)
-      flash[:notice] = "Complete your profile to become searchable!"
-    end
+    # if current_user == @user && !helpers.profile_completed?(@user)
+      # flash[:notice] = "Complete your profile to become searchable!"
+    # end
   end
 
   # GET /users/new
@@ -33,7 +29,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        if current_user.admin?
+        UserMailer.with(user: @user).welcome_email.deliver_later
+        if current_user != nil && current_user.admin?
           format.html { redirect_to users_path, notice: "User was successfully created." }
           format.json { render :show, status: :created, location: @user }
         else
@@ -66,10 +63,12 @@ class UsersController < ApplicationController
     respond_to do |format|
       if session[:current_user_id] == @user.id || current_user.admin?
         @user.destroy!
+        UserMailer.with(user: @user).delete_email.deliver_later
         if current_user != nil && current_user.admin?
           format.html { redirect_to users_path, notice: "User #{@user.email} deleted." }
           format.json { head :no_content }
         else
+          session.delete(:current_user_id)
           format.html { redirect_to root_path, notice: "Goodbye!" }
           format.json { head :no_content }
         end
@@ -86,8 +85,18 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :profile_photo,
-        :first_name, :last_name, :hours, :linkedin, :bio, :ngo, :admin)
+      params.require(:user).permit(
+        :email,
+        :password,
+        :password_confirmation,
+        :profile_photo,
+        :first_name,
+        :last_name,
+        :hours,
+        :linkedin,
+        :bio,
+        :ngo,
+        :admin)
     end
 
     # Authorize the current user or any admin in session to update or delete only themselves.

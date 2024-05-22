@@ -17,7 +17,8 @@ module ApplicationHelper
         user.attribute_present?(:first_name) &&
         user.attribute_present?(:last_name) &&
         user.attribute_present?(:hours) &&
-        user.attribute_present?(:bio)
+        user.attribute_present?(:bio) &&
+        user.attribute_present?(:linkedin)
         return true
       end
     elsif user.ngo?
