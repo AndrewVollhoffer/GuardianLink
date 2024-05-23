@@ -1,9 +1,9 @@
 <h1>Account Details</h1>
 
 <% if @user.profile_photo.attached? %>
-  <%= image_tag(@user.profile_photo, size: "100", alt: "...") %>
+  <%= image_tag(@user.profile_photo, size: "100", alt: "...", class: "rounded-circle") %>
 <% else %>
-  <%= image_tag("empty profile picture.jpg", size: "100", alt: "...") %>
+  <%= image_tag("empty profile picture.jpg", size: "100", alt: "...", class: "rounded-circle") %>
 <% end %>
 
 <% if current_user != @user %>
