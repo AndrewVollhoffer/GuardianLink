@@ -2,7 +2,14 @@
 <p>First name: <%= @user.first_name %> </p>
 <p>Last name: <%= @user.last_name %> </p>
 <p>Hours available/week: <%= @user.hours %> </p>
+
+<!-- Checks if the LinkedIn link contains the http string or not and adds it if needed -->
 <% if @user.linkedin != nil %>
-  <p> <%= link_to "LinkedIn Page", "http://#{@user.linkedin}", target: "_blank" %> </p>
+  <%if @user.linkedin.include? "http" %>
+    <p> <%= link_to "LinkedInPage", @user.linkedin, target: "_black" %> </p>
+  <% else %>
+    <p> <%= link_to "LinkedIn Page", "http://#{@user.linkedin}", target: "_blank" %> </p>
+  <% end %>
 <% end %>
+
 <p>Bio: <%= @user.bio %> </p>
