@@ -1,0 +1,14 @@
+Hi <%= @user.first_name %>
+
+Someone requested a password reset. If this was you, click the link below to reset it.
+
+The link will expire in 15 minutes.
+
+
+<%= password_reset_edit_url(token: @token) %>
+
+If this wasn't you, it might be a good idea to change your password if you haven't in a long time.
+
+Thanks,
+
+GuardianLink

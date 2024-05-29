@@ -1,19 +1,19 @@
 <div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th><h1 style="text-align: center">Users</h1></th>
-          <th><h1 style="text-align: center">Businesses</h1></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= render "user_table" %></td>
-          <td><%= render "ngo_table" %></td>
-        </tr>
-      <tbody>
-    </table>
-  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><h1 style="text-align: center">Users</h1></th>
+        <th><h1 style="text-align: center">Businesses</h1></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= render "user_table" %></td>
+        <td><%= render "ngo_table" %></td>
+      </tr>
+    <tbody>
+  </table>
+</div>
 
   <br>
   <%= link_to "New User", new_user_path(q: "user") %>

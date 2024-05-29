@@ -2,6 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.2.3"
 
+# Improve performance by avoiding unneccessary file polling on Windows
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 

@@ -1,5 +1,9 @@
 <h1>Account Details</h1>
 
+<% if current_user == @user && !profile_completed?(@user) %>
+  <% flash[:notice] = "Complete your profile to become searchable!" %>
+<% end %>
+
 <% if @user.profile_photo.attached? %>
   <%= image_tag(@user.profile_photo, size: "100", alt: "...", class: "rounded-circle") %>
 <% else %>

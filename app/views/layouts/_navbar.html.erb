@@ -1,42 +1,29 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid .mx-auto" style="width: 200px">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item dropdown">
-        <% if user_signed_in? && current_user.profile_photo.attached? %>
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag(current_user.profile_photo, size: "40", alt: "Profile", class: "rounded-circle") %> </a>
-        <% else %>
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Profile </a>
-        <% end %>
-         <ul class="dropdown-menu">
-            <li> 
-                <% if user_signed_in? %>
-                  <%= link_to 'Profile', user_path(current_user) %>
-                  <%= button_to 'Log Out', log_out_path(current_user), method: :delete %>
-                <%  else %>
-                  <%= link_to 'Log In', log_in_path  %>
-                  <li><hr class="dropdown-divider"></li>
-                  <%= link_to 'Sign Up', "#" %>
-                <% end %> 
-            </li>
-        </ul>
-        <li class="nav-item">
-            <%= link_to image_tag("glshield.jpg", size: "50x40", alt: "GL"), root_path  %>
-        </li>
-        <% if user_signed_in? && !current_user.admin? %>
-        <li class="nav-item dropdown">
-          <a class="nav-link disabled dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Messages
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <% end %>
-      </ul>
+  <div class="container-fluid">
+    <div>
+      <%= link_to image_tag("glshield.jpg", size: "60", alt: "GL", class: "navbar-brand"), user_signed_in? ? users_path : root_path  %>
+      <span style="color: purple">GuardianLink</span>
     </div>
+    <% if user_signed_in? %>
+      <div class="dropstart">
+        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <% if current_user.profile_photo.attached? %>
+            <%= image_tag(current_user.profile_photo, size: "40", alt: "Profile Picture", class: "rounded-circle") %> </a>
+          <% else %>
+            <%= image_tag("empty profile picture.jpg", size: "40", alt: "Empty Profile Picture", class: "rounded-circle") %>
+          <% end %>
+        </a>
+        <ul class="dropdown-menu me-1">
+          <div>
+            <li> <%= link_to 'Profile', user_path(current_user) %> </li>
+            <li><%= button_to 'Log Out', log_out_path(current_user), method: :delete %> </li>
+          </div>
+        </ul>
+      <% else %>
+        <% if !current_page?(log_in_path) && !user_signed_in? %>
+          <%= link_to "Log In", log_in_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </nav>

@@ -1,9 +1,8 @@
-<div class="container-fluid .mx-auto" style="width: 800px">
-    <div style="text-align: center">
+<div class="container" style="text-align: center">
         <h1>Welcome to GuardianLink!</h1><br>
     </div>
 
-    <div>
+    <div class="container">
         <h2>What is GuardianLink?</h2> <br>
         <p>GuardianLink (GL) is a platform dedicated to bridging the gap between providers of cybersecurity specialists
             and clients in need of these services. Our primary focus is on supporting non-profit organizations at no
@@ -12,7 +11,7 @@
             we made GL to provide both parties with tools to overcome this difficulty! </p> <br>
     </div>
 
-    <div>
+    <div class="container">
         <h2>Who are we?</h2> <br>
         <p>As we stated, GL was made by a small group of passionate Coding For Veterns students, and just like our specialists 
             we are also volunteers in the creation and maintenance of the GL vision! To put your mind at ease, meet the team:</p>
@@ -21,7 +20,7 @@
         <p>Andrew Vollhoffer: Full-stack Website designer/maintainer </p>
     </div>
 
-    <div>
+    <div class="container">
         <h2>Why join GuardianLink?</h2> <br>
         <p>GL is a community platform made to connect talented security specialists with
         non-profit organizations that can't afford the care and protection they need. This vision takes generous volunteers and 
@@ -29,8 +28,4 @@
         with their security needs, or a business that needs access to a generous volunteer community!</p> <br>
     </div>
 
-    <div>
-        <h1 style="text-align: center">JOIN NOW</h1>
-        <%= link_to "Join as Specialist", new_user_path(q: "user") %> | <%= link_to "Join as Business", new_user_path(q: "ngo" ) %>
-    </div>
-</div>
+    <h1 style="text-align: center"><%= link_to "JOIN NOW", new_user_path, class: "btn btn-primary"%></h1>

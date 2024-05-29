@@ -16,6 +16,16 @@
   <body>
 
     <%= render "layouts/navbar" %>
+    
+    <div style="background-color: orange;">
+    <p><u>Debug</u></p>
+    <% if user_signed_in? %>
+        <%= "Current user: #{current_user.email}" %><br>
+        <%= "Admin: #{current_user.admin?}" %>
+    <% else %>
+      <p>Guest session</p>
+    <% end %>
+    </div>
 
     <% if alert %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -29,12 +39,6 @@
     </div>
     <% end %>
 
-    <% if user_signed_in? %>
-      <%= "Current user: #{current_user.email}" %><br>
-      <%= "Admin: #{current_user.admin?}" %>
-    <% else %>
-      <p>Guest session</p>
-    <% end %>
 
     <%= yield %>
 

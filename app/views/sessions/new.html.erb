@@ -2,15 +2,22 @@
 
 <%= form_with url: log_in_path  do |form| %>
   
-  <p><%= form.label :email %></p>
-  <p><%= form.email_field :email, required: true %></p>
+  <div>
+    <p><%= form.label :email %></p>
+    <p><%= form.email_field :email, required: true %></p>
+  </div>
 
-  <p><%= form.label :password %></p>
-  <p><%= form.password_field :password, required: true %></p>
+  <div>
+    <p><%= form.label :password %></p>
+    <p><%= form.password_field :password, required: true %></p>
+    <%= link_to "Forgot your Password?", password_reset_path %>
+  </div>
 
-  <p><%= form.label :password_confirmation %></p>
-  <p><%= form.password_field :password_confirmation, required: true %></p>
-    
+  <div>
+    <p><%= form.label :password_confirmation %></p>
+    <p><%= form.password_field :password_confirmation, required: true %></p>
+  </div>
+  
   <p><%= form.submit 'Log In' %></p>
     
 <% end %>
