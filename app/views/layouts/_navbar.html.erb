@@ -1,9 +1,10 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar sticky-top border bg-gradient" style="background-color: white">
   <div class="container-fluid">
     <div>
       <%= link_to image_tag("glshield.jpg", size: "60", alt: "GL", class: "navbar-brand"), user_signed_in? ? users_path : root_path  %>
-      <span style="color: purple">GuardianLink</span>
+      <span class="d-inline-block align-text-top pe-3 fs-3" style="color: purple">GuardianLink</span>
     </div>
+
     <% if user_signed_in? %>
       <div class="dropstart">
         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -15,8 +16,8 @@
         </a>
         <ul class="dropdown-menu me-1">
           <div>
-            <li> <%= link_to 'Profile', user_path(current_user) %> </li>
-            <li><%= button_to 'Log Out', log_out_path(current_user), method: :delete %> </li>
+            <li> <%= link_to 'Profile', user_path(current_user), class: "btn btn-primary" %> </li>
+            <li><%= button_to 'Log Out', log_out_path(current_user), method: :delete, class: "btn btn-primary" %> </li>
           </div>
         </ul>
       <% else %>
@@ -25,5 +26,6 @@
         <% end %>
       </div>
     <% end %>
+
   </div>
 </nav>

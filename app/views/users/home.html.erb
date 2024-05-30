@@ -1,26 +1,38 @@
-<div class="container" style="text-align: center">
-        <h1>Welcome to GuardianLink!</h1><br>
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-center p-3">
+        <h1 style="text-center">Welcome to GuardianLink!</h5>
     </div>
 
-    <div class="container">
-        <h2>What is GuardianLink?</h2> <br>
-        <p>GuardianLink (GL) is a platform dedicated to bridging the gap between providers of cybersecurity specialists
-            and clients in need of these services. Our primary focus is on supporting non-profit organizations at no
-            cost to them. GL was created by a small team of Coding For Veterns students that felt it was way too hard for non-profit 
-            organizations to find and pay for cybersecurity specialists. We believe that this barrier needs to be broken down, so 
-            we made GL to provide both parties with tools to overcome this difficulty! </p> <br>
+    <div class="d-flex justify-content-evenly align-items-center p-5 bg-gradient rounded" style="background-color: purple">
+        <div class="p-2">
+            <h2 class="text-center pe-5 fs-2 fw-bolder" style="color: white">We Connect Businesses In Need <br> With Professional People</h2>
+            <p class="text-center p-3 pe-5 fs-5" style="color: white">
+                GuardianLink breaks down the barrier between cybersecurity specialists
+                and businesses in need of online security <strong>for free!</strong>
+                GL was created by Coding For Veterns students that wanted
+                to break down this barrier with GL!
+            </p> 
+        </div>
+    <%= image_tag("home_hero_splash.jpg", size: "750x450", alt: "GL", class: "rounded-4") %>
     </div>
 
-    <div class="container">
-        <h2>Who are we?</h2> <br>
-        <p>As we stated, GL was made by a small group of passionate Coding For Veterns students, and just like our specialists 
-            we are also volunteers in the creation and maintenance of the GL vision! To put your mind at ease, meet the team:</p>
+            </div>
+            <br>
+            <div class="d-flex align-content-right">
+                <h2 class="card-title">Who are we?</h2>
+            </div>
+        </div>
+
+    <div class="container w-50">
+        <p>We are a small group of passionate Coding For Veterns students that also
+            volunteer in the creation of the GuardianLink vision! To put your mind at ease, meet the team:</p>
         <p>Cameron Thain: Co-Founder </p>
         <p>Val Butross: Co-Founder </p>
         <p>Andrew Vollhoffer: Full-stack Website designer/maintainer </p>
     </div>
 
-    <div class="container">
+    <div>
         <h2>Why join GuardianLink?</h2> <br>
         <p>GL is a community platform made to connect talented security specialists with
         non-profit organizations that can't afford the care and protection they need. This vision takes generous volunteers and 
@@ -28,4 +40,5 @@
         with their security needs, or a business that needs access to a generous volunteer community!</p> <br>
     </div>
 
-    <h1 style="text-align: center"><%= link_to "JOIN NOW", new_user_path, class: "btn btn-primary"%></h1>
+    <h1 style="text-align: center">JOIN NOW</h1>
+</div>

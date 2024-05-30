@@ -17,6 +17,7 @@
 
     <%= render "layouts/navbar" %>
     
+    <!--
     <div style="background-color: orange;">
     <p><u>Debug</u></p>
     <% if user_signed_in? %>
@@ -25,8 +26,9 @@
     <% else %>
       <p>Guest session</p>
     <% end %>
-    </div>
+    </div> -->
 
+    <!-- Alert and notice blocks to display dismissible alerts -->
     <% if alert %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button><%= alert %></p>
