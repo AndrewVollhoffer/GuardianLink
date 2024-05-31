@@ -14,7 +14,7 @@
             <%= image_tag("empty profile picture.jpg", size: "40", alt: "Empty Profile Picture", class: "rounded-circle") %>
           <% end %>
         </a>
-        <ul class="dropdown-menu me-1">
+        <ul class="">
           <div>
             <li> <%= link_to 'Profile', user_path(current_user), class: "btn btn-primary" %> </li>
             <li><%= button_to 'Log Out', log_out_path(current_user), method: :delete, class: "btn btn-primary" %> </li>
@@ -22,7 +22,10 @@
         </ul>
       <% else %>
         <% if !current_page?(log_in_path) && !user_signed_in? %>
-          <%= link_to "Log In", log_in_path, class: "btn btn-primary" %>
+          <div>
+            <%= link_to "Log In", log_in_path, class: "btn btn-primary" %>
+            <%= link_to "Get Started", new_user_path, class: "btn btn-primary btn-lg" if !current_page?(new_user_path) %>
+          </div>
         <% end %>
       </div>
     <% end %>

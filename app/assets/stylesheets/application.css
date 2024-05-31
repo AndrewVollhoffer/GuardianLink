@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+.text-purple {
+    -webkit-text-fill-color: purple
+}
+
+.text-white {
+    -webkit-text-fill-color: whitesmoke
+}
+
+.bg-smoke {
+    background-color: whitesmoke;
+}
