@@ -1,9 +1,6 @@
-<!-- Sets the form type for ngo within the user model and displays errors -->
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this business from being saved:</h2>
-
       <ul>
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,26 +9,28 @@
     </div>
   <% end %>
 
+  <div class="input-group mb-3">
+    <%= form.file_field :profile_photo, type: "file", class: "form-control", id: "fileinputgroup" %>
+    <%= form.label "Business logo:", class: "input-group-text", for: "fileinputgroup" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.email_field :email, placeholder: @user.email, class: "form-control" %>
+    <%= form.label "POC Email", class: "form-label" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :first_name, class: "form-control" %>
+    <%= form.label "Business Name", class: "form-label" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_area :bio, class: "form-control" %>
+    <%= form.label "Areas of Concern", class: "form-label" %>
+  </div>
+
   <div>
-    <p>
-      <%= form.label "Business Logo:" %>
-      <%= form.file_field :profile_photo %>
-    </p>
-    <p>
-      <%= form.label "#{:email}:" %>
-      <%= form.email_field :email, value: @user.email %>
-    </p>
-    <p>
-      <%= form.label "Business Name:" %>
-      <%= form.text_field :first_name %>
-    </p>
-    <p>
-      <%= form.label "Areas of Concern: " %>
-      <%= form.text_area :bio %>
-    </p>
-    <p>
-      <%= form.submit "Update Business" %>
-    </p>
+    <%= form.submit "Update Business", class: "btn btn-primary" %>
   </div>
 
 <% end %>

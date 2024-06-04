@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
             if current_user.admin?
                 redirect_to users_path
             else
-                redirect_to user
+                redirect_to users_path
                 flash[:notice] = 'Welcome back.'
             end
           else

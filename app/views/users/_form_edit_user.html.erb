@@ -1,8 +1,6 @@
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,38 +9,43 @@
     </div>
   <% end %>
 
-  <div>
-    <p>
-      <%= form.label "Profile photo:" %>
-      <%= form.file_field :profile_photo %>
-    </p>
-    <p>
-      <%= form.label :email %>
-      <%= form.hidden_field :email, value: @user.email %>
-    </p>
-    <p>
-      <%= form.label :first_name %>
-      <%= form.text_field :first_name, placeholder: "First name" %>
-    </p>
-    <p>
-      <%= form.label :last_name %>
-      <%= form.text_field :last_name, placeholder: "Last name" %>
-    </p>
-    <p>
-      <%= form.label :hours %>
-      <%= form.number_field :hours, placeholder: 0 %>
-    </p>
-    <p>
-      <%= form.label :linkedin %>
-      <%= form.text_field :linkedin %>
-    </p>
-    <p>
-      <%= form.label :bio %>
-      <%= form.text_area :bio %>
-    </p>
-    <p>
-      <%= form.submit %>
-    </p>
+  <div class="input-group mb-3">
+    <%= form.file_field :profile_photo, type: "file", class: "form-control", id: "fileinputgroup" %>
+    <%= form.label "Profile photo:", class: "input-group-text", for: "fileinputgroup" %>
   </div>
 
+  <div class="form-floating mb-3">
+    <%= form.email_field :email, placeholder:"#{@user.email}", class: "form-control" %>
+    <%= form.label "Email address",  class: "form-label" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :first_name, placeholder: "First name", class: "form-control" %>
+    <%= form.label :first_name, class: "form-label" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :last_name, placeholder: "Last name", class: "form-control" %>
+    <%= form.label :last_name, class: "form-label" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.number_field :hours, placeholder: 0, class: "form-control" %>
+    <%= form.label "Hours Available Per Week", class: "form-label" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :linkedin, class: "form-control" %>
+    <%= form.label :linkedin, class: "form-label" %>
+  </div>
+
+  <div class="form-floating mb-3">
+    <%= form.text_area :bio, class: "form-control" %>
+    <%= form.label :bio, class: "form-label" %>
+  </div>
+
+  <div>
+    <%= form.submit "Update", class: "btn btn-primary" %>
+  </div>
+  
 <% end %>

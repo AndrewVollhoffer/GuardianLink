@@ -1,3 +1,7 @@
+<div class="text-center text-purple m-3 p-3">
+  <h1>Create a new Admin!</h1>
+</div>
+
 <!-- Sets the form type for users and displays errors -->
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
@@ -11,32 +15,31 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <h1>Create a new Admin!</h1>
-  </div>
-
-  <br>
   
-  <div>
-    <p>
-      <%= form.label "#{:email}:" %>
-      <%= form.email_field :email, placeholder: "123@email.com" %>
-    </p>
-    <p>
-      <%= form.label "#{:password}:" %>
-      <%= form.password_field :password, placeholder: "Password required" %>
-    </p>
-    <p>
-      <%= form.label "#{:password_confirmation}:" %>
-      <%= form.password_field :password_confirmation, placeholder: "Password required" %>
-    </p>
-    <p>
+  <div class="container-fluid w-75">
+
+    <div class="form-floating mb-3">
+      <%= form.email_field :email, required: true, placeholder: "123@email.com", class: "form-control" %>
+      <%= form.label "Email address", class: "form-label" %>
+    </div>
+
+    <div class="form-floating mb-3">
+      <%= form.password_field :password, required: true, placeholder: "Password required", class: "form-control" %>
+      <%= form.label "#{:password}:", class: "form-label" %>
+    </div>
+
+    <div class="form-floating mb-3">
+      <%= form.password_field :password_confirmation, required: true, placeholder: "Password required", class: "form-control" %>
+      <%= form.label "#{:password_confirmation}:", class: "form-label" %>
+    </div class="form-floating mb-3">
+
+    <div class="form-floating mb-3">
       <%= form.hidden_field :admin, value: true %>
-    </p>
-    <p>
-      <%= form.submit "Create Admin" %>
-    </p>
+    </div>
+    <div class="mb-3">
+      <%= form.submit "Create Admin", class: "btn btn-primary" %>
+    </div>
+
   </div>
   
 <% end %>

@@ -27,29 +27,40 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
+
       if @user.save
         UserMailer.with(user: @user).welcome_email.deliver_later
+        # Redirect to main view if the user is an admin
         if current_user != nil && current_user.admin?
-          format.html { redirect_to users_path, notice: "User was successfully created." }
+          format.html { redirect_to users_path, notice: "#{@user.email} successfully created." }
           format.json { render :show, status: :created, location: @user }
+        # Redirect to user profile if not admin
         else
           session[:current_user_id] = @user.id
-          format.html { redirect_to @user, notice: "Successfully created your profile!" }
+          format.html { redirect_to @user, notice: "Account successfully created!" }
           format.json { render :show, status: :created, location: @user }
         end
+      # If the user's not saved re-render the forms with errors
       else
-        format.html { render :new, status: :unprocessable_entity }
+        if params[:q] == "ngo"
+          format.html { render "form_new_ngo", status: :unprocessable_entity }
+        elsif params[:q] == "user"
+          format.html { render "form_new_user", status: :unprocessable_entity }
+        end
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+
     end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
+      # Update user and redirect to profile
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+        format.html { redirect_to user_url(@user), notice: "Account successfully updated!" }
         format.json { render :show, status: :ok, location: @user }
+      # Re-render for with ajax errors
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }

@@ -1,34 +1,84 @@
-<h1>Account Details</h1>
-
 <% if current_user == @user && !profile_completed?(@user) %>
-  <% flash[:notice] = "Complete your profile to become searchable!" %>
+  <% flash[:alert] = "Complete your profile to become searchable!" %>
 <% end %>
 
-<% if @user.profile_photo.attached? %>
-  <%= image_tag(@user.profile_photo, size: "100", alt: "...", class: "rounded-circle") %>
-<% else %>
-  <%= image_tag("empty profile picture.jpg", size: "100", alt: "...", class: "rounded-circle") %>
-<% end %>
+<!-- Main page container -->
+<div class="container-fluid ">
 
-<% if current_user != @user %>
-  <%= mail_to "#{@user.first_name} #{@user.last_name} <#{@user.email}>", "Email Me", class: "btn btn-outline-primary" %>
-<% end %>
 
-<% if @user.ngo? %>
-  <%= render "show_ngo" %>
-<% else %>
-  <%= render "show_user" %>
-<% end %>
+  <!-- Profile page content container -->
+  <div class="d-flex justify-content-center p-3">
 
-<% if current_user == @user || current_user.admin? %>
-  <div>
-    <%= link_to "Edit Profile", edit_user_path(@user) %>
-    <% if @user == current_user || current_user.admin? %>
-      <%= link_to "Change Password", edit_password_path %>
-    <% end %>
+    <!-- Picture and email button container -->
+    <div class="d-flex flex-column justify-content-center align-items-center m-1 p-1">
+      <% if @user.profile_photo.attached? %>
+        <%= image_tag(@user.profile_photo, size: "100", alt: "...", class: "rounded-circle") %>
+      <% else %>
+        <%= image_tag("empty profile picture.jpg", size: "100", alt: "...", class: "rounded-circle") %>
+      <% end %>
+
+      <% if current_user != @user %>
+        <%= mail_to "#{@user.first_name} #{@user.last_name} <#{@user.email}>", "Email Me", class: "btn btn-outline-primary" %>
+      <% end %>
+    </div>
+  
+    
+    <!-- User card container -->
+    <div>
+      <% if @user.ngo? %>
+        <%= render "show_ngo" %>
+      <% else %>
+        <%= render "show_user" %>
+      <% end %>
+    </div>
+
   </div>
-    <%= link_to "Connections", users_path %>
-    <%= button_to "Delete Me", @user, method: :delete, form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} } %>
-<% else %>
-  <%= link_to "Back", users_path %>
-<% end %>
+
+  <div class="m-3 text-center"><%= link_to "Back to Connections", users_path %></div>
+
+  <% if current_user == @user %>
+
+    <div class="text-center text-purple m-3 p-3">
+      <h1>Account Details</h1>
+    </div>
+
+    <!-- Account details container -->
+    <div class="d-flex flex-column justify-content-center align-items-center p-2">
+      <div class="border">
+        <% if !current_user.ngo? %>
+          <div class="border p-2"> <%= "Email: #{@user.email}"%> </div>
+          <div class="border p-2"> <%= "First name: #{@user.first_name}"%> </div>
+          <div class="border p-2"> <%= "Last name: #{@user.last_name}"%> </div>
+          <div class="border p-2"> <%= "LinkedIn: #{@user.linkedin}"%> </div>
+        <% else %>
+          <div class="border p-2"> <%= "Email: #{@user.email}"%> </div>
+          <div class="border p-2"> <%= "Business name: #{@user.first_name}"%> </div>
+        <% end %>
+        </div>
+      </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center p-2">
+      <%= link_to "Edit Profile", edit_user_path(@user) %>
+      <%= link_to "Change Password", edit_password_path %>  
+    </div>
+
+  <% end %>
+
+  <!-- Close account container with card and confirm dialog -->
+  <div class="d-flex justify-content-center m-2 p-2">
+    <div class="card w-50">
+      <div class="card-header" style="color: red">
+        Close Account
+      </div>
+      <div class="card-body">
+        <p class="card-text">We hope you'll reconsider as we continue to improve our service.</p>
+        <%= 
+          button_to "Delete Account", @user, method: :delete, 
+          form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} },
+          class: "btn btn-primary"
+        %>
+      </div>
+    </div>
+  </div>
+
+</div>

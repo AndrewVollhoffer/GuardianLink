@@ -1,42 +1,54 @@
-<!-- Sets the form type for users and displays errors -->
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this business from being saved:</h2>
+<div class="container-fluid w-75">
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
+  <div class="text-center text-purple m-3 p-3">
     <h1>Create a new Business!</h1>
   </div>
 
-  <br>
-  
-  <div>
-    <p>
-      <%= form.label "Point of contact email: " %>
-      <%= form.email_field :email, placeholder: "123@email.com" %>
-    </p>
-    <p>
-      <%= form.label :password %>
-      <%= form.password_field :password, placeholder: "Password required" %>
-    </p>
-    <p>
-      <%= form.label :password_confirmation %>
-      <%= form.password_field :password_confirmation, placeholder: "Password required" %>
-    </p>
-    <p>
-      <%= form.hidden_field :ngo, value: true %>
-    </p>
-    <p>
-      <%= form.submit "Create Organization" %>
-    </p>
-  </div>
-  
-<% end %>
+  <%= form_with model: @user do |form| %>
+
+    <% if form.object.errors.any? %>
+      <div class="" style="color: red">
+        <ul>
+          <% form.object.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+      <div class="form-floating mb-3">
+        <%= form.email_field :email, required: true, placeholder: "123@email.com", class: "form-control" %>
+        <%= form.label "Point of contact email", class: "form-label" %>
+      </div>
+      
+      <div class="form-floating mb-3">
+        <%= form.password_field :password, required: true, placeholder: "Password", class: "form-control" %>
+        <%= form.label :password, class: "form-label" %>
+      </div>
+
+      <div class="form-floating mb-3">
+        <%= form.password_field :password_confirmation, required: true, placeholder: "Confirmation", class: "form-control" %>
+        <%= form.label :password_confirmation, class: "form-label" %>
+      </div>
+
+      <div class="form-floating mb-3">
+        <%= form.hidden_field :ngo, value: true %>
+      </div>
+      
+      <div class="mb-3">
+        <%= form.submit "Create Organization", class: "btn btn-primary" %>
+      </div>
+
+      <div>
+        <% if user_signed_in? %>
+          <%= link_to "Back", users_path %>
+        <% elsif params[:q] != nil %>
+          <%= link_to "Back", new_user_path %>
+        <% end %>
+      </div>
+
+    </div>
+    
+  <% end %>
+</div>

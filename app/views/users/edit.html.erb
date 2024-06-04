@@ -1,13 +1,18 @@
-<h1>Account Details</h1>
+<div class="container-fluid w-50">
+    
+  <div class="text-center text-purple m-3 p-3">
+    <h1>Edit Account</h1>
+  </div>
 
-<% if @user.ngo == true %>
-  <%= render "form_edit_ngo", user: @user %>
-<% else %>
-  <%= render "form_edit_user", user: @user %>
-<% end %>
+  <div>
+    <% if @user.ngo == true %>
+      <%= render "form_edit_ngo", user: @user %>
+    <% else %>
+      <%= render "form_edit_user", user: @user %>
+    <% end %>
+  </div>
 
-<br>
-
-<div>
-  <%= link_to "Back", @user %>
+  <div class="pt-3">
+    <%= link_to "Back", @user %>
+  </div>
 </div>

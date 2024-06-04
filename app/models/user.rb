@@ -6,8 +6,8 @@ class User < ApplicationRecord
     validates_presence_of :email
     validates :email, uniqueness: true
 
-    validates_presence_of :password
-    validates :password, length: {minimum: 6}
+    validates_presence_of :password, on: :create
+    validates :password, length: {minimum: 6}, on: :create
 
     validate :valid_image
 
