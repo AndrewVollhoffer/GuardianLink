@@ -8,4 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.new(:email=>"admin@email.com", :password =>"admin1234", :password_confirmation=>"admin1234", :admin=>true, ngo=>false)
+User.new(
+  :email=>"admin@guardianlink.com",
+  :password =>"1guardianlinkadmin1",
+  :password_confirmation=>"1guardianlinkadmin1",
+  :admin=>true
+  )

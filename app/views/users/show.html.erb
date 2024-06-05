@@ -62,23 +62,24 @@
       <%= link_to "Change Password", edit_password_path %>  
     </div>
 
-  <% end %>
 
-  <!-- Close account container with card and confirm dialog -->
-  <div class="d-flex justify-content-center m-2 p-2">
-    <div class="card w-50">
-      <div class="card-header" style="color: red">
-        Close Account
-      </div>
-      <div class="card-body">
-        <p class="card-text">We hope you'll reconsider as we continue to improve our service.</p>
-        <%= 
-          button_to "Delete Account", @user, method: :delete, 
-          form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} },
-          class: "btn btn-primary"
-        %>
+    <!-- Close account container with card and confirm dialog -->
+    <div class="d-flex justify-content-center m-2 p-2">
+      <div class="card w-50">
+        <div class="card-header" style="color: red">
+          Close Account
+        </div>
+        <div class="card-body">
+          <p class="card-text">We hope you'll reconsider as we continue to improve our service.</p>
+          <%= 
+            button_to "Delete Account", @user, method: :delete, 
+            form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} },
+            class: "btn btn-primary"
+          %>
+        </div>
       </div>
     </div>
-  </div>
+  
+  <% end %>
 
 </div>
