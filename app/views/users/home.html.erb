@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" data-bs-spy="scroll" data-bs-target="#navbar">
 
     <!-- First section of homepage showing hero picture and brief synopsis of GL -->
     <div class="d-flex justify-content-evenly align-items-center p-5 bg-gradient rounded" style="background-color: purple">
@@ -23,7 +23,7 @@
         <%= image_tag("home hero splash.jpg", size: "750x450", alt: "GL Video synopsis", class: "rounded-4") %>
         <div class="p-3 ms-3">
             <h2 class="text-center pe-5 fs-2 fw-bolder text-purple">Can't find or afford Cybersecurity solutions? We are here to help!</h2>
-            <p class="mt-4 text-purple">
+            <p id="scrollspyHeading1" class="mt-4 text-purple">
                 <span class="fs-5"><strong>Small or non-for-profit businesses have a hard time with their security</strong></span>. There can be many reasons
                 for this, but we found that it mostly comes down to the cost of expensive tools or expensive wages for a Cybersecurity
                 team. We know you're too busy paying your employees, dealing with your supply chain, or putting profits back into your business to make it
@@ -42,7 +42,7 @@
         <!-- Benefit 1 -->
         <div class="d-flex flex-column align-items-center justify-content-center">
             <%= image_tag("empty profile picture.jpg", size: "50", alt: "Benefit 1", class: "rounded-circle") %>
-            <h5 class="p-3 text-white"><strong>Join A Community</strong></h5>
+            <h5 id="scrollspyHeading2" class="p-3 text-white"><strong>Join A Community</strong></h5>
             <p class="text-white">Work together on solving security issues</p>
         </div>
 
@@ -63,12 +63,12 @@
     </div>
 
     <!-- Fourth section of the homepage showing testimonials -->
-    <div>
+    <div class="my-5 p-5">
         <h1 class="text-purple text-center">Testimonials<h1>
         <div class="d-flex justify-content-evenly align-items-center gap-5 my-3 p-5">
             
-            <!-- Testimonal 1 from Cameron Thain -->
-            <div class="d-flex flex-column align-items-center justify-content-center w-50">
+            <!-- Testimonal 1 card from Cameron Thain -->
+            <div id="scrollspyHeading3" class="d-flex flex-column align-items-center justify-content-center w-50">
                 <p class="fs-4 text-center text-purple">"I run a non-for-profit immigration company. Before using GuardianLink, I had a really hard time
                     paying to keep my client's data secure. Now, I have a team of talented people that manage my cybersecurity for me for free. I wouldn't
                     still have my company if it wasn't for GuardianLink."
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <!-- Testimonal 2 from Val Butross-->
+            <!-- Testimonal 2 card from Val Butross-->
             <div class="d-flex flex-column align-items-center justify-content-center w-50">
                 <p class="fs-4 text-center text-purple">"I am part of a website security team. When I need to make sure that I'm following
                     the the industry's best practices and my small team is too busy, I reach out to other professionals on GuardianLink for help. 
@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            <!-- Testimonial 3 from Andrew Vollhoffer-->
+            <!-- Testimonial 3 card from Andrew Vollhoffer-->
             <div class="d-flex flex-column align-items-center justify-content-center w-50">
                 <p class="fs-4 text-center text-purple">"I recently became a CSSLP, but I wasn't able to find any jobs because of my lack of experience.
                     After joining GuardianLink and helping companies introduce best secure software practices, I finally had real experience 
@@ -113,8 +113,8 @@
     <!-- Sixth section of the homepage showing a FAQ list including text and video answers (Optional) -->
 
     <!-- Seventh and last section of the homepage showing the same simple call to action as the top of the page -->
-    <div class="d-flex flex-column justify-content-center align-items-center gap-3 p-5 bg-gradient rounded" style="background-color: purple">
-        <h1 class="fs-0 text-center text-white">Ready to Join the GuardianLink Community?</h1>
+    <div class="d-flex flex-column justify-content-center align-items-center gap-3 mt-5 p-5 bg-gradient rounded" style="background-color: purple">
+        <h1 id="scrollspyHeading4" class="fs-0 text-center text-white">Ready to Join the GuardianLink Community?</h1>
         <div class="grid column-gap-3">
             <%= link_to "Join as Specialist", new_user_path(q: "user"), class: "btn btn-primary btn-lg me-5" %>
             <%= link_to "Join as Business", new_user_path(q: "ngo" ), class: "btn btn-primary btn-lg" %>

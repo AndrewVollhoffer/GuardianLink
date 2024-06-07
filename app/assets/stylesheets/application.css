@@ -13,6 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@font-face {
+    font-family: "Thick AF";
+    src: url("THICCCBOI-ThiccchAF.ttf") format("truetype");
+}
+
+#brand-text {
+    font-family: "Thick AF"
+}
 
 .text-purple {
     -webkit-text-fill-color: purple

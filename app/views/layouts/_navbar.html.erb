@@ -1,10 +1,33 @@
-<nav class="navbar sticky-top border bg-gradient" style="background-color: white">
+<nav id="navbar" class="navbar sticky-top border bg-gradient" style="background-color: white">
   <div class="container-fluid">
+
+    <!-- GuardianLink logo and text box -->
     <div>
       <%= link_to image_tag("glshield.jpg", size: "60", alt: "GL", class: "navbar-brand"), user_signed_in? ? users_path : root_path  %>
-      <span class="d-inline-block align-text-top fs-3" style="color: purple">GuardianLink</span>
+      <span id="brand-text" class="d-inline-block align-text-top fs-3" style="color: purple">GuardianLink</span>
     </div>
 
+    <!-- Scrollspy active elements for page nav -->
+    <% if current_page?(root_path) %>
+      <div>
+        <ul class="nav text-purple">
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading1">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading2">Benefits</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading3">Testimonials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading4"><strong>Join</strong></a>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- Profile image box -->
     <% if user_signed_in? %>
       <div class="nav-item dropstart">
         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -30,6 +53,7 @@
         </ul>
       <% else %>
         <% if !current_page?(log_in_path) && !user_signed_in? %>
+          <!-- Log in/Get started buttons on homepage box -->
           <div>
             <%= link_to "Log In", log_in_path, class: "btn btn-primary" %>
             <%= link_to "Get Started", new_user_path, class: "btn btn-primary btn-lg" if !current_page?(new_user_path) %>

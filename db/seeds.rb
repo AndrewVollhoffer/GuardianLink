@@ -17,9 +17,9 @@ case Rails.env
       :admin=>true)
 
     User.create(
-      :email=>"test@email.com",
-      :password=>"test123",
-      :password_confirmation=>"test123")
+      :email=>"buddy@email.com",
+      :password=>"buddy123",
+      :password_confirmation=>"buddy123")
 
     User.create(
       :email=>"guardfan@email.com",
@@ -27,9 +27,9 @@ case Rails.env
       :password_confirmation=>"guardfan123")
 
     User.create(
-      :email=>"test@email.com",
-      :password=>"test123",
-      :password_confirmation=>"test123")
+      :email=>"haha@email.com",
+      :password=>"haha123",
+      :password_confirmation=>"haha123")
 
     User.create(
       :email=>"bizt@email.com",
