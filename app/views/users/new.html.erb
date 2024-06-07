@@ -1,20 +1,22 @@
 <div class="container-fluid w-75">
 
-  <% if params[:q] == nil %>
-    <div class="d-flex justify-content-evenly mt-5">
-      <%= link_to "Join as Specialist", new_user_path(q: "user"), class: "btn btn-primary btn-lg" %>
-      <%= link_to "Join as Business", new_user_path(q: "ngo" ), class: "btn btn-primary btn-lg" %>
-    </div>
-  <% end %>
-
-  <div>
-    <% if params[:q] == "user" %>
-      <%= render "form_new_user", user: @user %>
-    <% elsif params[:q] == "ngo" %>
-      <%= render "form_new_ngo", user: @user %>
-    <% elsif params[:q] == "admin" && current_user != nil && current_user.admin? %>
-      <%= render "form_new_admin", user: @user %>
+  <div class="d-flex flex-column align-items-center">
+    <% if params[:q] == nil %>
+      <div class="d-flex justify-content-evenly mt-5">
+        <%= link_to "Join as Specialist", new_user_path(q: "user"), class: "btn btn-primary btn-lg" %>
+        <%= link_to "Join as Business", new_user_path(q: "ngo" ), class: "btn btn-primary btn-lg" %>
+      </div>
     <% end %>
+
+    <div>
+      <% if params[:q] == "user" %>
+        <%= render "form_new_user", user: @user %>
+      <% elsif params[:q] == "ngo" %>
+        <%= render "form_new_ngo", user: @user %>
+      <% elsif params[:q] == "admin" && current_user != nil && current_user.admin? %>
+        <%= render "form_new_admin", user: @user %>
+      <% end %>
+    </div>
   </div>
 
 </div>
