@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         if params[:q] == "ngo"
           format.html { render "form_new_ngo", status: :unprocessable_entity }
         elsif params[:q] == "user"
-          format.html { render "form_new_user", status: :unprocessable_entity }
+          format.html { render :new, status: :unprocessable_entity }
         end
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

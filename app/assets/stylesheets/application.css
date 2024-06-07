@@ -13,9 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
 @font-face {
     font-family: "Thick AF";
-    src: url("THICCCBOI-ThiccchAF.ttf") format("truetype");
+    src: url("/assets/THICCCBOI-ThicccAF.ttf") format("truetype");
 }
 
 #brand-text {
