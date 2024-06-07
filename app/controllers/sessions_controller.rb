@@ -14,14 +14,14 @@ class SessionsController < ApplicationController
                 redirect_to users_path
                 flash[:notice] = 'Welcome back.'
             end
-          else
+        else
             redirect_to log_in_path
             flash[:notice] = 'E-mail and/or password is incorrect.'
         end
     end
 
     def destroy
-        if current_user.admin? == false ||current_user.admin? == nil || current_user != nil
+        if current_user.admin? == false || current_user.admin? == nil || current_user != nil
             session.delete(:current_user_id)
             @_current_user = nil
             redirect_to root_path
