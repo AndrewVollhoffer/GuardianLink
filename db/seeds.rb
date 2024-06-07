@@ -8,9 +8,19 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create(
-  :email=>"admin@guardianlink.com",
-  :password=>"1guardianlinkadmin1",
-  :password_confirmation=>"1guardianlinkadmin1",
-  :admin=>true
-  )
+case Rails.env
+  when: "development"
+    User.create(
+      :email=>"admin@guardianlink.com",
+      :password=>"1guardianlinkadmin1",
+      :password_confirmation=>"1guardianlinkadmin1",
+      :admin=>true
+      )
+  when: "production"
+    User.create(
+      :email=>"admin@guardianlink.com",
+      :password=>"1guardianlinkadmin1",
+      :password_confirmation=>"1guardianlinkadmin1",
+      :admin=>true
+      )
+end
