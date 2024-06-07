@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
         redirect_to log_in_path, alert: "You must be logged in!" if current_user.nil?
     end
 
+    # Check if current user has a completed profile (all required info submitted)
+    def profile_completed?(user)
+        helpers.profile_completed?(user)
+    end
 end

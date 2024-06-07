@@ -3,7 +3,6 @@
   <div class="row row-cols-3 d-flex justify-content-center mt-5">
 
     <% @users.each do |user| if !user.admin? && !user.ngo? && profile_completed?(user) %>
-      <!-- Checks if account is not an admin, IS NOT a NGO and outputs a user card -->
       <div class="col">
 
         <div class="card mb-0">
