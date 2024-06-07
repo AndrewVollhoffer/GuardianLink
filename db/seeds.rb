@@ -9,14 +9,14 @@
 #   end
 
 case Rails.env
-  when: "development"
+  when "development"
     User.create(
       :email=>"admin@guardianlink.com",
       :password=>"1guardianlinkadmin1",
       :password_confirmation=>"1guardianlinkadmin1",
       :admin=>true
       )
-  when: "production"
+  when "production"
     User.create(
       :email=>"admin@guardianlink.com",
       :password=>"1guardianlinkadmin1",
