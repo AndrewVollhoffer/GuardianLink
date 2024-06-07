@@ -22,8 +22,8 @@
               <% else %>
                 <li class="text-center"><strong><%= "#{current_user.first_name} #{current_user.last_name}" %></strong>
               <% end %>
+              <li class="dropdown-divider"></li>
             <% end %>
-            <li class="dropdown-divider"></li>
             <li> <%= link_to 'Profile', user_path(current_user), class: "dropdown-item text-center" %> </li>
             <li><%= button_to 'Log Out', log_out_path(current_user), method: :delete, class: "dropdown-item text-center" %> </li>
           </div>
