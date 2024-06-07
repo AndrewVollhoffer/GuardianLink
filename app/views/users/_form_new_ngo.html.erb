@@ -1,13 +1,13 @@
 <div class="container-fluid w-75">
 
   <div class="text-center text-purple m-3 p-3">
-    <h1>Create a new Business!</h1>
+    <h1><strong>Create a new Business!</strong></h1>
   </div>
 
   <%= form_with model: @user do |form| %>
 
     <% if form.object.errors.any? %>
-      <div class="" style="color: red">
+      <div style="color: red">
         <ul>
           <% form.object.errors.each do |error| %>
             <li><%= error.full_message %></li>
@@ -17,37 +17,35 @@
     <% end %>
 
 
-      <div class="form-floating mb-3">
-        <%= form.email_field :email, required: true, placeholder: "123@email.com", class: "form-control" %>
-        <%= form.label "Point of contact email", class: "form-label" %>
-      </div>
-      
-      <div class="form-floating mb-3">
-        <%= form.password_field :password, required: true, placeholder: "Password", class: "form-control" %>
-        <%= form.label :password, class: "form-label" %>
-      </div>
+    <div class="form-floating mb-3">
+      <%= form.email_field :email, required: true, placeholder: "123@email.com", class: "form-control" %>
+      <%= form.label "Point of contact email", class: "form-label" %>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <%= form.password_field :password, required: true, placeholder: "Password", class: "form-control" %>
+      <%= form.label :password, class: "form-label" %>
+    </div>
 
-      <div class="form-floating mb-3">
-        <%= form.password_field :password_confirmation, required: true, placeholder: "Confirmation", class: "form-control" %>
-        <%= form.label :password_confirmation, class: "form-label" %>
-      </div>
+    <div class="form-floating mb-3">
+      <%= form.password_field :password_confirmation, required: true, placeholder: "Confirmation", class: "form-control" %>
+      <%= form.label :password_confirmation, class: "form-label" %>
+    </div>
 
-      <div class="form-floating mb-3">
-        <%= form.hidden_field :ngo, value: true %>
-      </div>
-      
-      <div class="mb-3">
-        <%= form.submit "Create Organization", class: "btn btn-primary" %>
-      </div>
+    <div class="form-floating mb-3">
+      <%= form.hidden_field :ngo, value: true %>
+    </div>
+    
+    <div class="mb-3">
+      <%= form.submit "Create Organization", class: "btn btn-primary" %>
+    </div>
 
-      <div>
-        <% if user_signed_in? %>
-          <%= link_to "Back", users_path %>
-        <% elsif params[:q] != nil %>
-          <%= link_to "Back", new_user_path %>
-        <% end %>
-      </div>
-
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to "Back", users_path %>
+      <% elsif params[:q] != nil %>
+        <%= link_to "Back", new_user_path %>
+      <% end %>
     </div>
     
   <% end %>
