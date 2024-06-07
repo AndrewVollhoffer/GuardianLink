@@ -19,4 +19,5 @@ class ApplicationController < ActionController::Base
     def profile_completed?(user)
         helpers.profile_completed?(user)
     end
+
 end
