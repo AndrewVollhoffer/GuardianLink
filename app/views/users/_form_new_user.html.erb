@@ -1,46 +1,49 @@
-<div class="text-center text-purple m-3 p-3">
-  <h1><strong>Join as a Professional!</strong</h1>
-</div>
+<div class="container-fluid w-75">
 
-<!-- Sets the form type for users and displays errors -->
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-floating mb-3">
-    <%= form.email_field :email, required: true, placeholder: "123@email.com", class: "form-control" %>
-    <%= form.label "Email address", class: "form-label" %>
+  <div class="text-center text-purple m-3 p-3">
+    <h1><strong>Join as a Professional!</strong</h1>
   </div>
 
-  <div class="form-floating mb-3">
-    <%= form.password_field :password, required: true, placeholder: "Password", class: "form-control" %>
-    <%= form.label :password, class: "form-label" %>
-  </div>
+  <!-- Sets the form type for users and displays errors -->
+  <%= form_with(model: user) do |form| %>
+    <% if user.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-  <div class="form-floating mb-3">
-    <%= form.password_field :password_confirmation, required: true, placeholder: "Confirmation", class: "form-control" %>
-    <%= form.label :password_confirmation, class: "form-label" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.submit "Join Now", class: "btn btn-primary" %>
-  </div>
-
-  <div>
-    <% if user_signed_in? %>
-      <%= link_to "Back", users_path %>
-    <% elsif params[:q] != nil %>
-      <%= link_to "Back", new_user_path %>
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  </div>
 
-<% end %>
+    <div class="form-floating mb-3">
+      <%= form.email_field :email, required: true, placeholder: "123@email.com", class: "form-control" %>
+      <%= form.label "Email address", class: "form-label" %>
+    </div>
+
+    <div class="form-floating mb-3">
+      <%= form.password_field :password, required: true, placeholder: "Password", class: "form-control" %>
+      <%= form.label :password, class: "form-label" %>
+    </div>
+
+    <div class="form-floating mb-3">
+      <%= form.password_field :password_confirmation, required: true, placeholder: "Confirmation", class: "form-control" %>
+      <%= form.label :password_confirmation, class: "form-label" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit "Join Now", class: "btn btn-primary" %>
+    </div>
+
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to "Back", users_path %>
+      <% elsif params[:q] != nil %>
+        <%= link_to "Back", new_user_path %>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>
