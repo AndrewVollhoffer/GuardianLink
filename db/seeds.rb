@@ -14,13 +14,45 @@ case Rails.env
       :email=>"admin@guardianlink.com",
       :password=>"1guardianlinkadmin1",
       :password_confirmation=>"1guardianlinkadmin1",
-      :admin=>true
-      )
+      :admin=>true)
+
+    User.create(
+      :email=>"test@email.com",
+      :password=>"test123",
+      :password_confirmation=>"test123")
+
+    User.create(
+      :email=>"guardfan@email.com",
+      :password=>"guardfan123",
+      :password_confirmation=>"guardfan123")
+
+    User.create(
+      :email=>"test@email.com",
+      :password=>"test123",
+      :password_confirmation=>"test123")
+
+    User.create(
+      :email=>"bizt@email.com",
+      :password=>"biz123",
+      :password_confirmation=>"biz123",
+      :ngo=>true)
+
+    User.create(
+      :email=>"cityone@email.com",
+      :password=>"cityone123",
+      :password_confirmation=>"cityone123",
+      :ngo=>true)
+
+    User.create(
+      :email=>"newbusy@email.com",
+      :password=>"newbusy123",
+      :password_confirmation=>"newbusy123",
+      :ngo=>true)
+
   when "production"
     User.create(
       :email=>"admin@guardianlink.com",
       :password=>"1guardianlinkadmin1",
       :password_confirmation=>"1guardianlinkadmin1",
-      :admin=>true
-      )
+      :admin=>true)
 end
