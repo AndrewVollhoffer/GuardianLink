@@ -16,10 +16,12 @@
         </a>
         <ul class="dropdown-menu">
           <div>
-            <% if current_user.ngo? %>
-              <li class="text-center"><strong><%= current_user.first_name %></strong>
-            <% else %>
-              <li class="text-center"><strong><%= "#{current_user.first_name} #{current_user.last_name}" %></strong>
+            <% if current_user.first_name != nil %>
+              <% if current_user.ngo? %>
+                <li class="text-center"><strong><%= current_user.first_name %></strong>
+              <% else %>
+                <li class="text-center"><strong><%= "#{current_user.first_name} #{current_user.last_name}" %></strong>
+              <% end %>
             <% end %>
             <li class="dropdown-divider"></li>
             <li> <%= link_to 'Profile', user_path(current_user), class: "dropdown-item text-center" %> </li>
