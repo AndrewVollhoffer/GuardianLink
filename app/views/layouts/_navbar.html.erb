@@ -3,8 +3,8 @@
 
     <!-- GuardianLink logo and text box -->
     <div>
-      <%= link_to image_tag("guardianlink_brand.jpg", size: "60", alt: "GL", class: "navbar-brand"), user_signed_in? ? users_path : root_path  %>
-      <span id="brand-text" class="d-inline-block align-text-top fs-3" style="color: purple">GuardianLink</span>
+      <%= link_to image_tag("guardianlink_brand.jpg", alt: "GL Logo", class: "navbar-brand"), user_signed_in? ? users_path : root_path  %>
+      <!-- <span id="brand-text" class="d-inline-block align-text-top fs-3" style="color: purple">GuardianLink</span> -->
     </div>
 
     <!-- Scrollspy active elements for page nav -->
