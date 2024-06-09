@@ -3,3 +3,4 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 Turbo.setFormMode("off")
+Turbo.session.drive = false
