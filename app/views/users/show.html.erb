@@ -1,4 +1,4 @@
-<% if current_user == @user && !current_user.admin? && !profile_completed?(@user) && !current_page?(users_path) %>
+<% if current_user == @user && !current_user.admin? && profile_completed?(@user) && !current_page?(users_path) %>
   <% flash[:alert] = "Complete your profile to become searchable!" %>
 <% end %>
 
@@ -64,22 +64,39 @@
 
 
     <!-- Close account container with card and confirm dialog -->
-    <div class="d-flex justify-content-center m-2 p-2">
+    <div class="d-flex justify-content-center m-2 p-2" data-turbo="true">
       <div class="card w-50">
         <div class="card-header" style="color: red">
           Close Account
         </div>
         <div class="card-body">
           <p class="card-text">We hope you'll reconsider as we continue to improve our service.</p>
-          <%= 
-            button_to "Delete Account", @user, method: :delete, 
-            form: { data: {turbo_confirm: "Are you sure? Closed accounts cannot be recovered."} },
-            class: "btn btn-primary"
-          %>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete-modal">
+            Close Account
+          </button>
         </div>
       </div>
     </div>
   
+    <!-- Modal -->
+    <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="delete-modalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="delete-modalLabel" style="color: red"><strong>Are You Sure?</strong></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Closed accounts <strong>cannot</strong> be recovered.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <%= button_to "Delete Account", @user, method: :delete, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <% end %>
 
 </div>
