@@ -39,7 +39,7 @@
         </a>
         <ul class="dropdown-menu">
           <div>
-            <% if current_user.first_name != nil %>
+            <% if current_user.first_name != nil || current_user.first_name != "" %>
               <% if current_user.ngo? %>
                 <li class="text-center"><strong><%= current_user.first_name %></strong>
               <% else %>

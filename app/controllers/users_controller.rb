@@ -26,31 +26,27 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
+    # Readd respond_to and format.html/json responses to reinitialize Turbo
+    # respond_to do |format|
 
       if @user.save
         UserMailer.with(user: @user).welcome_email.deliver_later
+
         # Redirect to main view if the user is an admin
         if current_user != nil && current_user.admin?
-          format.html { redirect_to users_path, notice: "#{@user.email} successfully created." }
-          format.json { render :show, status: :created, location: @user }
+          redirect_to users_path, notice: "#{@user.email} successfully created."
         # Redirect to user profile if not admin
         else
           session[:current_user_id] = @user.id
-          format.html { redirect_to @user, notice: "Account successfully created!" }
-          format.json { render :show, status: :created, location: @user }
+          redirect_to @user, notice: "Account successfully created!"
         end
+
       # If the user's not saved re-render the forms with errors
       else
-        if params[:q] == "ngo"
-          format.html { render "form_new_ngo", status: :unprocessable_entity }
-        elsif params[:q] == "user"
-          format.html { render :new, status: :unprocessable_entity }
-        end
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render new_user_path(@user), status: :unprocessable_entity
       end
 
-    end
+    # end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
