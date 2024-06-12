@@ -43,7 +43,19 @@ class UsersController < ApplicationController
 
       # If the user's not saved re-render the forms with errors
       else
-        render new_user_path(@user), status: :unprocessable_entity
+        # Errors must be saved and displayed through the session instead of through form errors because rendering
+        # templates breaks Bootstrap styling
+        session[:errors] = @user.errors.full_messages
+
+        if !current_user.nil? && current_user.admin?
+          redirect_to "/users/new?q=admin"
+        end
+
+        if params[:q] == "ngo"
+          redirect_to "/users/new?q=ngo"
+        elsif params[:q] == "user"
+          redirect_to "/users/new?q=user"
+        end
       end
 
     # end

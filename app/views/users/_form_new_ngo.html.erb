@@ -1,21 +1,21 @@
-<div class="container-fluid w-75">
+<div class="container-fluid w-50">
 
   <div class="text-center text-purple m-3 p-3">
     <h1><strong>Create a new Business!</strong></h1>
   </div>
 
-  <%= form_with model: @user do |form| %>
+  <%= form_with(model: @user) do |form| %>
 
-    <% if form.object.errors.any? %>
+    <% if session[:errors] != nil %>
       <div style="color: red">
         <ul>
-          <% form.object.errors.each do |error| %>
-            <li><%= error.full_message %></li>
+          <% session[:errors].each do |error| %>
+            <li><%= error %></li>
           <% end %>
+          <% session[:errors] = nil %>
         </ul>
       </div>
     <% end %>
-
 
     <div class="form-floating mb-3">
       <%= form.email_field :email, required: true, placeholder: "123@email.com", class: "form-control" %>

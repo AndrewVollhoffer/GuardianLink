@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
     before_action :current_user
+    helper_method :user_signed_in?
 
     private
 
@@ -18,6 +19,12 @@ class ApplicationController < ActionController::Base
     # Check if current user has a completed profile (all required info submitted)
     def profile_completed?(user)
         helpers.profile_completed?(user)
+    end
+
+    def user_signed_in?
+        if @_current_user != nil
+        return true
+        end
     end
 
 end
