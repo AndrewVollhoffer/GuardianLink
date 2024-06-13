@@ -41,7 +41,7 @@ class UsersController < ApplicationController
           redirect_to @user, notice: "Account successfully created!"
         end
 
-      # If the user's not saved re-render the forms with errors
+      # If the user's not saved re-render the forms with session errors
       else
         # Errors must be saved and displayed through the session instead of through form errors because rendering
         # templates breaks Bootstrap styling
@@ -51,13 +51,9 @@ class UsersController < ApplicationController
           redirect_to "/users/new?q=admin"
         end
 
-        if params[:q] == "ngo"
-          redirect_to "/users/new?q=ngo"
-        elsif params[:q] == "user"
-          redirect_to "/users/new?q=user"
-        end
-      end
+        redirect_back fallback_location: root_path
 
+      end
     # end
   end
 
