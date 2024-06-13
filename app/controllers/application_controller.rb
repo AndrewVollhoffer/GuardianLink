@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
     before_action :current_user
-    helper_method :user_signed_in?
+    before_action :guest_user
 
     private
 
@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
         User.find_by(id: session[:current_user_id])
     end
 
+    # Creates a guest session if user is not signed in
+    def guest_user
+        unless user_signed_in?
+            session[:current_user_id] = "guest"
+        end
+    end
+    
     # Require that a session is active meaning they are signed in
     def require_user_signed!
         redirect_to log_in_path, alert: "You must be logged in!" if current_user.nil?
@@ -26,5 +33,6 @@ class ApplicationController < ActionController::Base
         return true
         end
     end
+    helper_method :user_signed_in?
 
 end

@@ -47,13 +47,12 @@ class UsersController < ApplicationController
         # templates breaks Bootstrap styling
         session[:errors] = @user.errors.full_messages
 
-        if !current_user.nil? && current_user.admin?
+        case params[:q]
+        when "admin" 
           redirect_to "/users/new?q=admin"
-        end
-
-        if params[:q] == "ngo"
+        when "ngo"
           redirect_to "/users/new?q=ngo"
-        elsif params[:q] == "user"
+        when "user"
           redirect_to "/users/new?q=user"
         end
       end
