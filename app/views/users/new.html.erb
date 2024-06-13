@@ -16,7 +16,7 @@
       <% if current_user.admin? %>
         <%= render "form_new_admin", user: @user %>
       <% else %>
-        <% redirect_back %>
+        <% redirect_to :back %>
       <% end %>
     <% end %>
   </div>

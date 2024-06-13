@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-  def current_user
-    return @_current_user
-  end
-
   def profile_completed?(user)
     if !user.ngo?
       if
