@@ -41,20 +41,13 @@ class UsersController < ApplicationController
           redirect_to @user, notice: "Account successfully created!"
         end
 
-      # If the user's not saved re-render the forms with errors
+      # If the user's not saved re-render the correct form with user errors
       else
         # Errors must be saved and displayed through the session instead of through form errors because rendering
         # templates breaks Bootstrap styling
         session[:errors] = @user.errors.full_messages
 
-        case params[:q]
-        when "admin" 
-          redirect_to "/users/new?q=admin"
-        when "ngo"
-          redirect_to "/users/new?q=ngo"
-        when "user"
-          redirect_to "/users/new?q=user"
-        end
+        redirect_to "users/new?=admin"
       end
 
     # end

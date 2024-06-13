@@ -6,7 +6,7 @@
 
   <%= form_with(model: @user) do |form| %>
 
-    <% if session[:errors] != nil %>
+    <% if session[:errors] %>
       <div style="color: red">
         <ul>
           <% session[:errors].each do |error| %>
