@@ -16,7 +16,7 @@
       <% if current_user.admin? %>
         <%= render "form_new_admin", user: @user %>
       <% else %>
-        <% redirect_to :back %>
+        <% redirect_back fallback_location: root_path %>
       <% end %>
     <% end %>
   </div>
