@@ -28,7 +28,7 @@
     </div>
 
     <div class="form-floating mb-3">
-      <%= form.password_field :password_confirmation, required: true, placeholder: "Confirmation", class: "form-control" %>
+      <%= form.password_field :password_confirmation, required: true, placeholder: "Password confirmation", class: "form-control" %>
       <%= form.label :password_confirmation, class: "form-label" %>
     </div>
 
@@ -37,11 +37,7 @@
     </div>
 
     <div>
-      <% if user_signed_in? %>
-        <%= link_to "Back", users_path %>
-      <% elsif params[:q] != nil %>
-        <%= link_to "Back", new_user_path %>
-      <% end %>
+      <%= link_to "Back", new_user_path %>
     </div>
 
   <% end %>

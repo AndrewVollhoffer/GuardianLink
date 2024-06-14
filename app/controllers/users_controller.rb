@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
+  # Assign the user to an accessible instance variable
   before_action :set_user, only: %i[ show edit update destroy ]
+  # An extra layer of security ensuring users can only change their own information
   before_action :authorize_user, only: [:update, :destroy ]
+  # Allow only users that are signed in to access edit, update, and delete requests
   before_action :require_user_signed!, only: [:edit, :update, :destroy ]
 
   # GET /users or /users.json
@@ -47,10 +50,14 @@ class UsersController < ApplicationController
         # templates breaks Bootstrap styling
         session[:errors] = @user.errors.full_messages
 
+        # Check if an admin is creating an admin and redirect to admin form
         if !current_user.nil? && current_user.admin?
           redirect_to "/users/new?q=admin"
+        else
+          redirect_back fallback_location root_path
         end
 
+        # Redirect back to the previous requested form or home page if that fails
         redirect_back fallback_location: root_path
 
       end
@@ -59,12 +66,13 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    # Respond_to still working even with Turbo Drive off. Remove respond_to and format responses if it fails
     respond_to do |format|
       # Update user and redirect to profile
       if @user.update(user_params)
         format.html { redirect_to user_url(@user), notice: "Account successfully updated!" }
         format.json { render :show, status: :ok, location: @user }
-      # Re-render for with ajax errors
+      # Re-render form with ajax errors
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -74,6 +82,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    # Reference :update comment
     respond_to do |format|
       if session[:current_user_id] == @user.id || current_user.admin?
         @user.destroy!

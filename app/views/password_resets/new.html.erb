@@ -1,10 +1,20 @@
-<h1> Forget Your Password?</h1>
+<div class="container-fluid w-50">
+    
+  <div class="text-center text-purple m-3 p-3">
+    <h1><strong>Forgot Your Password?</strong></h1>
+  </div>
 
-<%= form_with url: password_reset_path do |form| %>
+  <%= form_with url: password_reset_path do |form| %>
 
-  <p><%= form.label :email %></p>
-  <p><%= form.email_field :email, required: true %></p>
+    <div class="form-floating mb-3">
+      <%= form.email_field :email, required: true, placeholder: "Email address", class: "form-control" %>
+      <%= form.label "Email address", class: "form-label" %>
+    </div>
 
-  <p><%= form.submit 'Reset Password' %></p>
+    <div class="form-floating mb-3">
+      <%= form.submit "Reset Password", class: "btn btn-primary" %>
+    </div>
+    
+  <% end %>
 
-<% end %>
+</div>

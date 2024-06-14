@@ -1,34 +1,43 @@
-<h1> Change Password </h1>
+<div class="container-fluid w-50">
 
-<%= form_with model: current_user, url: edit_password_path do |form| %>
+  <div class="text-center text-purple m-3 p-3">
+    <h1><strong>Change Password</strong></h1>
+  </div>
 
-  <% if form.object.errors.any? %>
-    <div class="alert alert-danger">
-      <ul>
-        <% form.object.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= form_with model: current_user, url: edit_password_path do |form| %>
+
+    <% if session[:errors] != nil %>
+      <div style="color: red">
+        <ul>
+          <% session[:errors].each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+          <% session[:errors] = nil %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-floating mb-3">
+      <%= form.password_field :password_challenge, required: true, placeholder: "Current Password", class: "form-control" %>
+      <%= form.label "Current Password", class: "form-label" %>
     </div>
+
+    <div class="form-floating mb-3">
+      <%= form.password_field :password, required: true, placeholder: "New Password", class: "form-control" %>
+      <%= form.label "New password", class: "form-label" %>
+    </div>
+
+    <div class="form-floating mb-3">
+      <%= form.password_field :password_confirmation, required: true, placeholder: "Password confirmation", class: "form-control" %>
+      <%= form.label :password_confirmation, class: "form-label" %>
+    </div>
+      
+    <div class="mb-3">
+      <%= form.submit 'Update Password', class: "btn btn-primary" %>
+    </div>
+
   <% end %>
 
-  <div>
-    <p><%= form.label "Current Password" %></p>
-    <p><%= form.password_field :password_challenge %></p>
-  </div>
+  <%= link_to "Back", current_user %>
 
-  <div>
-    <p><%= form.label :password %></p>
-    <p><%= form.password_field :password, required: true %></p>
-  </div>
-
-  <div>
-    <p><%= form.label :password_confirmation %></p>
-    <p><%= form.password_field :password_confirmation, required: true %></p>
-  </div>
-    
-  <p><%= form.submit 'Update Password' %></p>
-    
-<% end %>
-
-<%= link_to "Back", current_user %>
+</div>

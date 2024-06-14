@@ -21,9 +21,10 @@ class ApplicationController < ActionController::Base
         helpers.profile_completed?(user)
     end
 
+    # Only return true if the user is signed in
     def user_signed_in?
         if @_current_user != nil
-        return true
+            return true
         end
     end
 

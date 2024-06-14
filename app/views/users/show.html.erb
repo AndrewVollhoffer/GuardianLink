@@ -1,10 +1,9 @@
-<% if current_user == @user && !current_user.admin? && !profile_completed?(@user) && !current_page?(users_path) %>
+<% if current_user == @user && !current_user.admin? && !profile_completed?(@user) && current_page?(user_path) %>
   <% flash[:alert] = "Complete your profile to become searchable!" %>
 <% end %>
 
 <!-- Main page container -->
 <div class="container-fluid ">
-
 
   <!-- Profile page content container -->
   <div class="d-flex justify-content-center p-3">

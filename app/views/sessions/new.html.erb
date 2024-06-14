@@ -1,10 +1,10 @@
-<div class="text-center text-purple m-3 p-3">
-  <h1> Log In </h1>
-</div>
+<div class="container-fluid w-50">
 
-<%= form_with url: log_in_path  do |form| %>
-  
-  <div class="container-fluid w-75">
+  <div class="text-center text-purple m-3 p-3">
+      <h1><strong>Log In</strong></h1>
+  </div>
+
+  <%= form_with url: log_in_path  do |form| %>
 
     <div class="form-floating mb-3">
       <%= form.email_field :email, required: true, placeholder: "Email address", class: "form-control" %>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-floating mb-3">
-      <%= form.password_field :password_confirmation, required: true, placeholder: "Confirmation", class: "form-control" %>
+      <%= form.password_field :password_confirmation, required: true, placeholder: "Password confirmation", class: "form-control" %>
       <%= form.label :password_confirmation, class: "form-label" %>
     </div>
     
@@ -26,10 +26,9 @@
       <%= form.submit 'Log In', class: "btn btn-primary" %>
     </div>
 
-  </div>
+    <div>
+      <%= link_to "Back", root_path %>
+    </div>
 
-  <div class="container-fluid w-75">
-    <%= link_to "Back", root_path %>
-  </div>
-    
-<% end %>
+  <% end %>
+</div>

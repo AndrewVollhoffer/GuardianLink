@@ -1,5 +1,7 @@
 class PasswordResetsController < ApplicationController
 
+  before_action :require_password_length
+
   def new
   end
 
@@ -28,17 +30,16 @@ class PasswordResetsController < ApplicationController
     @token = params[:token]
     @user = User.find_signed!(@token, purpose: "password_reset")
 
-    respond_to do |format|
-
-      if @user.update(password_params)
-        format.html { redirect_to log_in_path, notice: "Password reset successfully!" }
-        format.json { render "log-in", status: :ok }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-
+    if @user.update(password_params)
+      redirect_to log_in_path, notice: "Password reset successfully!"
+    else
+      session[:errors] = @user.errors.full_messages
+      redirect_back fallback_location: log_in_path
     end
+
+    rescue ActiveSupport::MessageVerifier::InvalidSignature
+      redirect_to log_in_path, alert: "This token has expired. Please try again!"
+
   end
 
   private
@@ -46,4 +47,9 @@ class PasswordResetsController < ApplicationController
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
   end
+
+  def require_password_length
+    redirect_back fallback_location: log_in_path if :password.length < 6
+  end
+
 end

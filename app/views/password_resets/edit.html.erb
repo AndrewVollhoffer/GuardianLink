@@ -1,27 +1,36 @@
-<h1> Reset Your Password </h1>
+<div class="container-fluid w-50">
+    
+  <div class="text-center text-purple m-3 p-3">
+    <h1><strong>Reset Your Password</strong></h1>
+  </div>
 
-<%= form_with model: @user, url: password_reset_edit_path(token: @token) do |form| %>
+  <%= form_with model: @user, url: password_reset_edit_path(token: @token) do |form| %>
 
-  <% if form.object.errors.any? %>
-    <div style="color: red">
-      <ul>
-        <% form.object.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <% if session[:errors] != nil %>
+      <div style="color: red">
+        <ul>
+          <% session[:errors].each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+          <% session[:errors] = nil %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="form-floating mb-3">
+      <%= form.password_field :password, required: true, placeholder: "New password", class: "form-control" %>
+      <%= form.label "New password", class: "form-label" %>
     </div>
+
+    <div class="form-floating mb-3">
+      <%= form.password_field :password_confirmation, required: true, placeholder: "Password confirmation", class: "form-control" %>
+      <%= form.label "Password confirmation", class: "form-label" %>
+    </div>
+
+    <div>
+      <%= form.submit 'Reset Password', class: "btn btn-primary" %></p>
+    </div>
+
   <% end %>
-  
-  <div>
-    <p><%= form.label :password %></p>
-    <p><%= form.password_field :password, required: true %></p>
-  </div>
 
-  <div>
-    <p><%= form.label :password_confirmation %></p>
-    <p><%= form.password_field :password_confirmation, required: true %></p>
-  </div>
-
-  <p><%= form.submit 'Reset Password' %></p>
-
-<% end %>
+</div>
