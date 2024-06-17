@@ -4,7 +4,7 @@
     <h1><strong>Join as a Professional!</strong></h1>
   </div>
 
-  <%= form_with(model: user) do |form| %>
+  <%= form_with(model: @user) do |form| %>
 
     <% if session[:errors] != nil %>
       <div style="color: red">

@@ -1,14 +1,12 @@
-<div class="container-fluid w-50">
-    
-  <% if current_user != nil && current_user.admin? %>
+<div class="container-fluid w-75">
 
-    <div class="text-center text-purple m-3 p-3">
-      <h1>Create a new Admin!</h1>
-    </div>
+  <div class="text-center text-purple m-3 p-3">
+    <h1><strong>Create a new Admin!</strong></h1>
+  </div>
 
-    <!-- Sets the form type for users and displays errors -->
-    <%= form_with(model: @user) do |form| %>
+  <%= form_with(model: @user) do |form| %>
 
+<<<<<<< HEAD
         <% if session[:errors] != nil %>
           <div style="color: red">
             <ul>
@@ -40,15 +38,42 @@
         </div>
         <div class="mb-3">
           <%= form.submit "Create Admin", class: "btn btn-primary" %>
+=======
+      <% if session[:errors] != nil %>
+        <div style="color: red">
+          <ul>
+            <% session[:errors].each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+            <% session[:errors] = nil %>
+          </ul>
+>>>>>>> c0260afd01df97db7e4ced63cac6c8c74e893faf
         </div>
+      <% end %>
 
+      <div class="form-floating mb-3">
+        <%= form.email_field :email, required: true, placeholder: "123@email.com", class: "form-control" %>
+        <%= form.label "Email address", class: "form-label" %>
       </div>
-      
-    <% end %>
-    
-  <% else %>
-    <div class="text-center text-purple m-3 p-3">
-      <h1>Access Denied</h1>
+
+      <div class="form-floating mb-3">
+        <%= form.password_field :password, required: true, placeholder: "Password required", class: "form-control" %>
+        <%= form.label "#{:password}:", class: "form-label" %>
+      </div>
+
+      <div class="form-floating mb-3">
+        <%= form.password_field :password_confirmation, required: true, placeholder: "Password required", class: "form-control" %>
+        <%= form.label "#{:password_confirmation}:", class: "form-label" %>
+      </div class="form-floating mb-3">
+
+      <div class="form-floating mb-3">
+        <%= form.hidden_field :admin, value: true %>
+      </div>
+      <div class="mb-3">
+        <%= form.submit "Create Admin", class: "btn btn-primary" %>
+      </div>
+
+      <%= link_to "Back", users_path %>
     </div>
   <% end %>
 

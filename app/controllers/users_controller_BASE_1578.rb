@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
 
-  # Assign the user to an accessible instance variable
   before_action :set_user, only: %i[ show edit update destroy ]
-  # An extra layer of security ensuring users can only change their own information
   before_action :authorize_user, only: [:update, :destroy ]
-  # Allow only users that are signed in to access edit, update, and delete requests
   before_action :require_user_signed!, only: [:edit, :update, :destroy ]
 
   # GET /users or /users.json
@@ -44,46 +41,34 @@ class UsersController < ApplicationController
           redirect_to @user, notice: "Account successfully created!"
         end
 
-<<<<<<< HEAD
-      # If the user's not saved re-render the forms with session errors
-=======
-      # If the user's not saved re-render the correct form with user errors
->>>>>>> c0260afd01df97db7e4ced63cac6c8c74e893faf
+      # If the user's not saved re-render the forms with errors
       else
         # Errors must be saved and displayed through the session instead of through form errors because rendering
         # templates breaks Bootstrap styling
         session[:errors] = @user.errors.full_messages
 
-<<<<<<< HEAD
-        # Check if an admin is creating an admin and redirect to admin form
         if !current_user.nil? && current_user.admin?
           redirect_to "/users/new?q=admin"
-        else
-          redirect_back fallback_location root_path
         end
 
-        # Redirect back to the previous requested form or home page if that fails
-        redirect_back fallback_location: root_path
-
-=======
-        redirect_to "users/new?=admin"
->>>>>>> c0260afd01df97db7e4ced63cac6c8c74e893faf
+        if params[:q] == "ngo"
+          redirect_to "/users/new?q=ngo"
+        elsif params[:q] == "user"
+          redirect_to "/users/new?q=user"
+        end
       end
+
     # end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-
-    if user_signed_in? then @user.signed_in = true end
-
-    # Respond_to still working even with Turbo Drive off. Remove respond_to and format responses if it fails
     respond_to do |format|
       # Update user and redirect to profile
       if @user.update(user_params)
         format.html { redirect_to user_url(@user), notice: "Account successfully updated!" }
         format.json { render :show, status: :ok, location: @user }
-      # Re-render form with ajax errors
+      # Re-render for with ajax errors
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -93,7 +78,6 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    # Reference :update comment
     respond_to do |format|
       if session[:current_user_id] == @user.id || current_user.admin?
         @user.destroy!

@@ -44,17 +44,12 @@ class UsersController < ApplicationController
           redirect_to @user, notice: "Account successfully created!"
         end
 
-<<<<<<< HEAD
       # If the user's not saved re-render the forms with session errors
-=======
-      # If the user's not saved re-render the correct form with user errors
->>>>>>> c0260afd01df97db7e4ced63cac6c8c74e893faf
       else
         # Errors must be saved and displayed through the session instead of through form errors because rendering
         # templates breaks Bootstrap styling
         session[:errors] = @user.errors.full_messages
 
-<<<<<<< HEAD
         # Check if an admin is creating an admin and redirect to admin form
         if !current_user.nil? && current_user.admin?
           redirect_to "/users/new?q=admin"
@@ -65,9 +60,6 @@ class UsersController < ApplicationController
         # Redirect back to the previous requested form or home page if that fails
         redirect_back fallback_location: root_path
 
-=======
-        redirect_to "users/new?=admin"
->>>>>>> c0260afd01df97db7e4ced63cac6c8c74e893faf
       end
     # end
   end
