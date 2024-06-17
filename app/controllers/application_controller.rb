@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
             session[:current_user_id] = "guest"
         end
     end
-    
+
     # Require that a session is active meaning they are signed in
     def require_user_signed!
         redirect_to log_in_path, alert: "You must be logged in!" if current_user.nil?
