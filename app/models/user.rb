@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+    attr_accessor :signed_in
+
     has_secure_password
     has_one_attached :profile_photo
 
@@ -7,7 +9,7 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
 
     validates_presence_of :password, on: :create
-    validates :password, length: {minimum: 6}, if: :user_signed_in?
+    validates :password, length: {minimum: 6}, unless: :signed_in
 
     validate :valid_image
 
@@ -20,13 +22,6 @@ class User < ApplicationRecord
         end
         unless profile_photo.blob.content_type == ".jpg" || profile_photo.blob.content_type == "png"
             errors.add(:profile_photo, "Image must a jpeg or png")
-        end
-    end
-
-    # Only returns true if the user is signed in
-    def user_signed_in?
-        if @_current_user != nil
-            return true
         end
     end
 

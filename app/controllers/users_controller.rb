@@ -66,6 +66,9 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+
+    if user_signed_in? then @user.signed_in = true end
+
     # Respond_to still working even with Turbo Drive off. Remove respond_to and format responses if it fails
     respond_to do |format|
       # Update user and redirect to profile

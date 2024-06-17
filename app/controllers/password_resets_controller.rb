@@ -1,7 +1,5 @@
 class PasswordResetsController < ApplicationController
 
-  before_action :require_password_length
-
   def new
   end
 
@@ -31,7 +29,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_signed!(@token, purpose: "password_reset")
 
     if @user.update(password_params)
-      redirect_to log_in_path, notice: "Password reset successfully!"
+      redirect_to log_in_path, notice: "Password reset successfully! Please sign in."
     else
       session[:errors] = @user.errors.full_messages
       redirect_back fallback_location: log_in_path
@@ -46,10 +44,6 @@ class PasswordResetsController < ApplicationController
 
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
-  end
-
-  def require_password_length
-    redirect_back fallback_location: log_in_path if :password.length < 6
   end
 
 end
