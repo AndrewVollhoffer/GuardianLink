@@ -43,7 +43,7 @@
     <div>
       <% if user_signed_in? %>
         <%= link_to "Back", users_path %>
-      <% elsif params[:q] != nil %>
+      <% else %>
         <%= link_to "Back", new_user_path %>
       <% end %>
     </div>

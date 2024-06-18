@@ -50,11 +50,6 @@ class UsersController < ApplicationController
         # templates breaks Bootstrap styling
         session[:errors] = @user.errors.full_messages
 
-        # Check if an admin is creating an admin and redirect to admin form
-        if !current_user.nil? && current_user.admin?
-          redirect_to "/users/new?q=admin"
-        end
-
         # Redirect back to the previous requested form or home page if that fails
         redirect_back fallback_location: root_path
 
@@ -88,7 +83,7 @@ class UsersController < ApplicationController
       if session[:current_user_id] == @user.id || current_user.admin?
         @user.destroy!
         UserMailer.with(user: @user).delete_email.deliver_later
-        if current_user != nil && current_user.admin?
+        if current_user != nil && current_user.admin? && @user != current_user
           format.html { redirect_to users_path, notice: "User #{@user.email} deleted." }
           format.json { head :no_content }
         else
