@@ -53,8 +53,6 @@ class UsersController < ApplicationController
         # Check if an admin is creating an admin and redirect to admin form
         if !current_user.nil? && current_user.admin?
           redirect_to "/users/new?q=admin"
-        else
-          redirect_back fallback_location root_path
         end
 
         # Redirect back to the previous requested form or home page if that fails
