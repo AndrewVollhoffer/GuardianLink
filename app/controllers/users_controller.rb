@@ -33,8 +33,7 @@ class UsersController < ApplicationController
     # respond_to do |format|
 
       if @user.save
-        UserMailer.with(user: @user).welcome_email.deliver_later
-
+        UserMailer.with(user: @user).welcome_email.deliver_now
         # Redirect to main view if the user is an admin
         if current_user != nil && current_user.admin?
           redirect_to users_path, notice: "#{@user.email} successfully created."
