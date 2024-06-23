@@ -11,21 +11,37 @@
       </tr>
     <tbody class="table-group-divider">
       <% @users.each do |user| %>
+
         <tr>
+          <!-- Email table cell -->
           <% if !user.ngo %>
             <% if user.admin? %> 
               <td> <strong><u> <%= user.email %> </strong></u> </td>
             <% else %>
               <td> <%= user.email %> </td>
             <% end %> </td>
+
+            <!-- Last update table cell -->
             <td> <%= user.updated_at %> </td>
-            <td> <%= profile_completed?(user) %> </td>
+
+            <!-- Profile completed value table cell -->
+            <% if profile_completed?(user) %>
+              <td><span style="color: green">Yes</span></td>
+            <% else %>
+              <td><span style="color: red">No</span></td>
+            <% end %>
+
+            <!-- Show user button table cell -->
             <td> <%= link_to "Show", user %> </td>
+
+            <!-- Delete user button table cell IF not main admin -->
             <% if user.id != 0  %>
               <td> <%= button_to 'Delete', user, method: :delete %> </td>
             <% end %>
+
           <% end %>
         </tr>
+        
       <% end %>
     </tbody>
   </table>
