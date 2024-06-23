@@ -1,5 +1,5 @@
 <% if user_signed_in? && current_user.admin?%>
-    <% redirect_to users_path %>
+    <% controller.redirect_to users_path %>
 <% end %>
 
 <div class="container-fluid" data-bs-spy="scroll" data-bs-target="#navbar">

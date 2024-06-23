@@ -7,5 +7,5 @@
     <%= render "ngo_cards" %>
   <% end %>
 <% else %>
-  redirect_to root_path
+  <% controller.redirect_to root_path %>
 <% end %>
