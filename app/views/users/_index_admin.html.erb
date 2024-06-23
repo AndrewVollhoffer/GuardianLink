@@ -2,8 +2,8 @@
   <table class="table">
     <thead>
       <tr>
-        <th><h1 class="text-purple" style="text-align: center">Users (<%= @users.count(!@user.ngo?) %>)</h1></th>
-        <th><h1 class="text-purple" style="text-align: center">Businesses (<%= @users.count(@user.ngo?) %>)</h1></th>
+        <th><h1 class="text-purple" style="text-align: center">Users (<%= @users.count{ |user| !user.ngo? } %>)</h1></th>
+        <th><h1 class="text-purple" style="text-align: center">Businesses (<%= @users.count{ |user| user.ngo? } %>)</h1></th>
       </tr>
     </thead>
     <tbody>
