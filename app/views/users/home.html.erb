@@ -2,7 +2,7 @@
     <% controller.redirect_to users_path %>
 <% end %>
 
-<div class="container-fluid" data-bs-spy="scroll" data-bs-target="#navbar">
+<div data-bs-spy="scroll" data-bs-target="#navbar" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" tabindex="0" class="container-fluid">
 
     <!-- First section of homepage showing hero picture and brief synopsis of GL -->
     <div class="d-flex justify-content-evenly align-items-center p-5 bg-gradient rounded" style="background-color: purple">
@@ -23,10 +23,7 @@
     <br>
 
     <!-- Second section of homepage showing brief hero video and pain points/solutions -->
-    <div class="d-flex justify-content-evenly align-items-center my-5 p-5">
-
-        <div id="scrollspyHeading1">
-        </div>
+    <div id="scrollspyHeading1" class="d-flex justify-content-evenly align-items-center my-5 p-5">
 
         <%= image_tag("home hero splash.jpg", size: "750x450", alt: "GL Video synopsis", class: "rounded-4") %>
         <div class="p-3 ms-3">
@@ -45,11 +42,8 @@
     </div>
 
     <!-- Third section of homepage showing 3 benefits of GuardianLink and what feature makes it possible -->
-    <div class="d-flex justify-content-evenly align-items-center gap-5 my-5 p-5 bg-gradient rounded" style="background-color: purple">
+    <div id="scrollspyHeading2" class="d-flex justify-content-evenly align-items-center gap-5 my-5 p-5 bg-gradient rounded" style="background-color: purple">
 
-        <div id="scrollspyHeading2">
-        </div>
-        
         <!-- Benefit 1 -->
         <div class="d-flex flex-column align-items-center justify-content-center">
             <%= image_tag("community_white.jpg", size: "50", alt: "Benefit 1") %>
@@ -74,11 +68,10 @@
     </div>
 
     <!-- Fourth section of the homepage showing testimonials -->
-    <div class="my-5 p-5">
+    <div id="scrollspyHeading3" class="my-5 p-5">
         <h1 class="text-purple text-center">Testimonials<h1>
         <div class="d-flex justify-content-evenly align-items-center gap-5 my-3 p-5">
-            <div id="scrollspyHeading3">
-            </div>
+
             <!-- Testimonal 1 card from Cameron Thain -->
             <div class="d-flex flex-column align-items-center justify-content-center w-50">
                 <p class="fs-4 text-center text-purple">"I run a non-for-profit immigration company. Before using GuardianLink, I had a really hard time
@@ -126,8 +119,8 @@
     <!-- Sixth section of the homepage showing a FAQ list including text and video answers (Optional) -->
 
     <!-- Seventh and last section of the homepage showing the same simple call to action as the top of the page -->
-    <div class="d-flex flex-column justify-content-center align-items-center gap-3 mt-5 p-5 bg-gradient rounded" style="background-color: purple">
-        <h1 id="scrollspyHeading4" class="fs-0 text-center text-white">Ready to Join the GuardianLink Community?</h1>
+    <div id="scrollspyHeading4" class="d-flex flex-column justify-content-center align-items-center gap-3 mt-5 p-5 bg-gradient rounded" style="background-color: purple">
+        <h1 class="fs-0 text-center text-white">Ready to Join the GuardianLink Community?</h1>
         <div class="grid column-gap-3">
             <%= link_to "Join as Specialist", new_user_path(q: "user"), class: "btn btn-primary btn-lg me-5" %>
             <%= link_to "Join as Business", new_user_path(q: "ngo" ), class: "btn btn-primary btn-lg" %>
