@@ -1,4 +1,4 @@
-<% if user_signed_in? && current_user.admin? %>
+<% if user_signed_in? %>
     <% controller.redirect_to users_path %>
 <% end %>
 
