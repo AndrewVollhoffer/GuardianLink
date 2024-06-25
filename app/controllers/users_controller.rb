@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if session[:current_user_id] == @user.id || current_user.admin?
         @user.destroy!
-        UserMailer.with(user: @user).delete_email.deliver_later
+        UserMailer.with(user: @user).delete_email.deliver_now
         if current_user != nil && current_user.admin? && @user != current_user
           format.html { redirect_to users_path, notice: "User #{@user.email} deleted." }
           format.json { head :no_content }
