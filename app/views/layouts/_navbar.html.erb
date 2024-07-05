@@ -7,8 +7,8 @@
       <!-- <span id="brand-text" class="d-inline-block align-text-top fs-3" style="color: purple">GuardianLink</span> -->
     </div>
 
-    <!-- Scrollspy active elements for page nav -->
-    <% if current_page?(root_path) %>
+    <!-- Scrollspy active elements for homepage nav -->
+    <% if current_page?(root_path) && !user_signed_in? %>
       <div>
         <ul class="nav">
           <li class="nav-item">
@@ -25,6 +25,10 @@
           </li>
         </ul>
       </div>
+    <% elsif user_signed_in? %>
+      <div>
+        <span style="color: red"><strong>Next database restart: 06 July 2024</strong></span>
+      </div>
     <% end %>
 
     <!-- Profile image box -->
@@ -38,6 +42,7 @@
           <% end %>
         </a>
         <ul class="dropdown-menu">
+          <!-- Dropdown menu content with user email or name and log out button -->
           <div>
             <% if current_user.first_name != nil || current_user.first_name != "" %>
               <% if current_user.ngo? %>
