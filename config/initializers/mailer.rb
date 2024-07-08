@@ -1,1 +1,1 @@
-Resend.api_key = "re_bcrsbfsW_6rhZSgRJ5Bxkgf7aLPX5Snss"
+Resend.api_key = ENV.fetch("RESEND_API_KEY")
