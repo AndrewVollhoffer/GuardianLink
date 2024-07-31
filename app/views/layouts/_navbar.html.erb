@@ -44,14 +44,15 @@
         <ul class="dropdown-menu">
           <!-- Dropdown menu content with user email or name and log out button -->
           <div>
-            <% if current_user.first_name != nil || current_user.first_name != "" %>
+            <% if current_user.first_name != nil && !current_user.first_name.empty? %>
               <% if current_user.ngo? %>
                 <li class="text-center"><strong><%= current_user.first_name %></strong>
               <% else %>
                 <li class="text-center"><strong><%= "#{current_user.first_name} #{current_user.last_name}" %></strong>
               <% end %>
+            <% else %>
+              <li class="text-center text-truncate"><strong><%= current_user.email %></strong>
             <% end %>
-            <li class="text-center text-truncate"><strong><%= current_user.email %></strong>
             <li class="dropdown-divider"></li>
             <li> <%= link_to 'Profile', user_path(current_user), class: "dropdown-item text-center" %> </li>
             <li><%= button_to 'Log Out', log_out_path(current_user), method: :delete, class: "dropdown-item text-center" %> </li>
