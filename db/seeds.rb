@@ -13,8 +13,8 @@ case Rails.env
     # Admin
     User.create(
       :email=>"admin@guardianlink.com",
-      :password=>"1guardianlinkadmin1",
-      :password_confirmation=>"1guardianlinkadmin1",
+      :password=>"password",
+      :password_confirmation=>"password",
       :admin=>true)
 
     # Users
@@ -56,8 +56,8 @@ case Rails.env
     # Admin
     User.create(
       :email=>"admin@guardianlink.com",
-      :password=>"1guardianlinkadmin1",
-      :password_confirmation=>"1guardianlinkadmin1",
+      :password=>ENV.fetch("ADMIN_PASSWORD"),
+      :password_confirmation=>ENV.fetch("ADMIN_PASSWORD"),
       :admin=>true)
 
     # Users
