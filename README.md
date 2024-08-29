@@ -1,24 +1,14 @@
-# README
+The following are links for the project to include the overview for the entire project with all the outlines, planning, requirements, acceptance criteria, etc.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project Overview/Outline/Review: 
+- https://docs.google.com/document/d/1zVGP_SkaqRug9dl5MgSlqDZG0eVjcAXHKfZIscg3EM8/edit?usp=sharing
 
-Things you may want to cover:
+Gantt Chart outline:
+- https://drive.google.com/file/d/1-47DKvidfqAP-scMa9niWrxa_LcuKXzz/view?usp=sharing
 
-* Ruby version
+Wireframe outline: 
+- https://miro.com/app/board/uXjVKZH_oZQ=/?share_link_id=869584476408
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Risk Assessment:
+- https://docs.google.com/document/d/1pVLLvQyvZdpPtOeiU-pJRrxapiRxlWsS/edit?usp=sharing&ouid=105314377908703495625&rtpof=true&sd=true (outline)
+- https://docs.google.com/spreadsheets/d/1jj0J4SE3crtU6-NRuNx-3eQbB9Yp6AT2/edit?usp=sharing&ouid=105314377908703495625&rtpof=true&sd=true (rubric)
