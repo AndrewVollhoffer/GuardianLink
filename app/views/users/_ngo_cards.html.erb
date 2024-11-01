@@ -18,7 +18,7 @@
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title"><%= "#{user.first_name} #{user.last_name}" %></h5>
-                <% if user.id != 1 and user.id <= 12 %>
+                <% if !user.admin? and user.id <= 12 %>
                   <h3 class="badge rounded-pill text-bg-purple">Example</h3>
                 <% end %>
                 <p class="card-text text-truncate"><%= user.bio %></p>
