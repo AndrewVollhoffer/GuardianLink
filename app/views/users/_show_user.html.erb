@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title"> <%= "#{@user.first_name}  #{@user.last_name}" %></h5>
-    <% if !user.admin? and user.id <= 12 %>
+    <% if !@user.admin? and @user.id <= 12 %>
       <h3 class="badge rounded-pill text-bg-success">Example</h3>
     <% end %>
     <p class="card-text"> 
