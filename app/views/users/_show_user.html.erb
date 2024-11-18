@@ -10,7 +10,7 @@
         <%if @user.linkedin.include? "http" %>
           <p> <%= link_to "LinkedInPage", @user.linkedin, target: "_black" %> </p>
         <% else %>
-          <p> <%= link_to "LinkedIn Page", "http://#{@user.linkedin}", target: "_blank" %> </p>
+          <p> <%= link_to "LinkedIn Page", "https://#{@user.linkedin}", target: "_blank" %> </p>
         <% end %>
       <% end %>
     </p>

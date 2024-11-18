@@ -27,6 +27,7 @@ Rails.application.configure do
     config.public_file_server.headers = {
       "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
+
   else
     config.action_controller.perform_caching = false
 
@@ -45,6 +46,7 @@ Rails.application.configure do
   #   location: '/usr/sbin/sendmail',
   #   arguments: %w[ -i ]
   # }
+
   config.action_mailer.perform_deliveries = :false
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: "localhost:3000"}

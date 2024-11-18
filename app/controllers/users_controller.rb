@@ -33,7 +33,9 @@ class UsersController < ApplicationController
     # respond_to do |format|
 
       if @user.save
-        UserMailer.with(user: @user).welcome_email.deliver_now
+        if ENV["RAILS_ENV"] == "production"
+          UserMailer.with(user: @user).welcome_email.deliver_now
+        end
         # Redirect to main view if the user is an admin
         if current_user != nil && current_user.admin?
           redirect_to users_path, notice: "#{@user.email} successfully created."
