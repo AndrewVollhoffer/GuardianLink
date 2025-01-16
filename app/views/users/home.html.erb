@@ -2,7 +2,7 @@
     <% controller.redirect_to users_path %>
 <% end %>
 
-<div data-bs-spy="scroll" data-bs-target="#navbar" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" tabindex="0" class="container-fluid">
+<div data-bs-spy="scroll" data-bs-target="#navbar" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" tabindex="0" class="container-fluid justify-content-center">
 
     <!-- First section of homepage showing hero picture and brief synopsis of GL -->
     <div class="d-flex justify-content-evenly align-items-center p-5 bg-gradient rounded" style="background-color: purple">
@@ -54,27 +54,27 @@
     </div>
 
     <!-- Third section of homepage showing 3 benefits of GuardianLink and what feature makes it possible -->
-    <div id="scrollspyHeading2" class="d-flex justify-content-evenly align-items-center gap-5 my-5 p-5 bg-gradient rounded" style="background-color: purple">
-
+    <div id="scrollspyHeading2" class="row d-flex justify-content-center align-items-center gap-5 my-5 p-5 bg-gradient rounded" style="background-color: purple">
+    
         <!-- Benefit 1 -->
-        <div class="d-flex flex-column align-items-center justify-content-center">
+        <div class="col d-flex flex-column align-items-center justify-content-center">
             <%= image_tag("community_white.jpg", size: "50", alt: "Benefit 1") %>
-            <h5 class="p-3 text-white"><strong>Join A Community</strong></h5>
-            <p class="text-white">Work together on solving security issues</p>
+            <h5 class="p-3 text-white text-center"><strong>Join A Community</strong></h5>
+            <p class="text-white text-center">Work together on solving security issues</p>
         </div>
 
         <!-- Benefit 2 -->
-        <div class="d-flex flex-column align-items-center justify-content-center">
+        <div class="col d-flex flex-column align-items-center justify-content-center">
             <%= image_tag("lock_white.jpg", size: "50", alt: "Benefit 1") %>
-            <h5 class="p-3 text-white"><Strong>Cybersecurity Focused</strong></h5>
-            <p class="text-white">We focus heavily on the online threat space</p>
+            <h5 class="p-3 text-white text-center"><Strong>Cybersecurity Focused</strong></h5>
+            <p class="text-white text-center">We focus heavily on the online threat space</p>
         </div>
 
         <!-- Benefit 3 -->
-        <div class="d-flex flex-column align-items-center justify-content-center">
+        <div class="col d-flex flex-column align-items-center justify-content-center">
             <%= image_tag("talents_white.jpg", size: "50", alt: "Benefit 1") %>
-            <h5 class="p-3 text-white"><strong>Lend Your Talents</strong></h5>
-            <p class="text-white">Help those in need with your unique skills</p>
+            <h5 class="p-3 text-white text-center"><strong>Lend Your Talents</strong></h5>
+            <p class="text-white text-center">Help those in need with your unique skills</p>
         </div>
 
     </div>
