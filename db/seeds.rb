@@ -18,9 +18,8 @@ case Rails.env
       :admin=>true)
 
     # Users
-    User.create(
+    user = User.create(
       :email=>"JohnDoe@email.com",
-      :profile_photo=>File.open(Rails.root.join("app", "assets", "images", "examples", "john_doe.jpg")),
       :password=>"johndoe123",
       :password_confirmation=>"johndoe123",
       :first_name=>"John",
@@ -28,6 +27,8 @@ case Rails.env
       :hours=>10,
       :linkedin=>"iamawesome.com",
       :bio=>"I am John Doe. I am a software engineer.")
+
+    user.profile_photo.attach(io: File.open(Rails.root.join("app/assets/images/examples/john_doe.png")), filename: "john_doe.png")
 
     User.create(
       :email=>"guardfan@email.com",

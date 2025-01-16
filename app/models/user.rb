@@ -21,7 +21,7 @@ class User < ApplicationRecord
             errors.add(:profile_photo, "Image must be less than 1MB")
         end
         unless profile_photo.blob.content_type == ".jpg" || profile_photo.blob.content_type == "png"
-            errors.add(:profile_photo, "Image must be a jpeg or png file")
+            errors.add(:profile_photo, "Image must be a jpg or png file")
         end
     end
 
