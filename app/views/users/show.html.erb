@@ -16,8 +16,10 @@
         <%= image_tag("empty profile picture.jpg", size: "100", alt: "...", class: "rounded-circle") %>
       <% end %>
 
-      <% if current_user != @user %>
+      <% if current_user != @user and profile_completed?(current_user) %>
         <%= mail_to "#{@user.first_name} #{@user.last_name} <#{@user.email}>", "Email Me", class: "btn btn-outline-primary" %>
+      <% elsif current_user != @user %>
+        <%= link_to 'Complete profile to send email', current_user, class: "btn btn-primary text-center" %>
       <% end %>
     </div>
   
