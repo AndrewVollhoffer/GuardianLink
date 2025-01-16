@@ -16,8 +16,13 @@
             </p> 
             <div class="pe-5 d-flex justify-content-center"><%= link_to "JOIN THE COMMUNITY", new_user_path, class: "btn btn-lg btn-primary" %></div>
         </div>
-    
-    <%= image_tag("home hero picture.jpg", size: "850x500", alt: "GL hero image", class: "rounded-4") %>
+        <div class="d-none d-lg-block">
+            <%= image_tag("home hero picture.jpg", size: "700", alt: "GL hero image", class: "rounded-4") %>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center d-md-none mt-5">
+        <%= image_tag("home hero picture.jpg", size: "500", alt: "GL hero image", class: "rounded-4") %>
     </div>
 
     <br>
@@ -25,7 +30,10 @@
     <!-- Second section of homepage showing brief hero video and pain points/solutions -->
     <div id="scrollspyHeading1" class="d-flex justify-content-evenly align-items-center my-5 p-5">
 
-        <%= image_tag("home hero splash.jpg", size: "750x450", alt: "GL Video synopsis", class: "rounded-4") %>
+        <div class="d-none d-lg-block">
+            <%= image_tag("home hero splash.jpg", size: "750x450", alt: "GL Video synopsis", class: "rounded-4") %>
+        </div>
+
         <div class="p-3 ms-3">
             <h2 class="text-center pe-5 fs-2 fw-bolder text-purple">Can't find or afford Cybersecurity solutions? We are here to help!</h2>
             <p class="mt-4 text-purple">
@@ -39,6 +47,10 @@
                 and businesses to connect and provide cybersecurity solutions for online security needs.
             </p>
         </div>
+    </div>
+
+    <div class="d-flex justify-content-center d-md-none mx-5">
+        <%= image_tag("home hero splash.jpg", size: "500x320", alt: "GL Video synopsis", class: "rounded-4") %>
     </div>
 
     <!-- Third section of homepage showing 3 benefits of GuardianLink and what feature makes it possible -->
