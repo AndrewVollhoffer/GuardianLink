@@ -82,10 +82,10 @@
     <!-- Fourth section of the homepage showing testimonials -->
     <div id="scrollspyHeading3" class="my-5 p-5">
         <h1 class="text-purple text-center">Testimonials<h1>
-        <div class="d-flex justify-content-evenly align-items-center gap-5 my-3 p-5">
+        <div class="row d-flex justify-content-evenly align-items-center gap-5 my-3 p-5">
 
             <!-- Testimonal 1 card from Cameron Thain -->
-            <div class="d-flex flex-column align-items-center justify-content-center w-50">
+            <div class="col d-flex flex-column align-items-center justify-content-center w-50">
                 <p class="fs-4 text-center text-purple">"I run a non-for-profit immigration company. Before using GuardianLink, I had a really hard time
                     paying to keep my client's data secure. Now, I have a team of talented people that manage my cybersecurity for me for free. I wouldn't
                     still have my company if it wasn't for GuardianLink."
@@ -97,7 +97,7 @@
             </div>
 
             <!-- Testimonal 2 card from Val Butross-->
-            <div class="d-flex flex-column align-items-center justify-content-center w-50">
+            <div class="col d-flex flex-column align-items-center justify-content-center w-50">
                 <p class="fs-4 text-center text-purple">"I am part of a website security team. When I need to make sure that I'm following
                     the the industry's best practices and my small team is too busy, I reach out to other professionals on GuardianLink for help. 
                     No matter what my issue is, I can always find someone that can help!"
@@ -109,7 +109,7 @@
             </div>
 
             <!-- Testimonial 3 card from Andrew Vollhoffer-->
-            <div class="d-flex flex-column align-items-center justify-content-center w-50">
+            <div class="col d-flex flex-column align-items-center justify-content-center w-50">
                 <p class="fs-4 text-center text-purple">"I recently became a CSSLP, but I wasn't able to find any jobs because of my lack of experience.
                     After joining GuardianLink and helping a few companies introduce best practices for secure software development, I finally had 
                     real experience to add to my resume. Now I work for NASA."
@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    <!-- Fifth section of the homepage listing all the actual features that GuardianLink provides both regulard and NGO users (optional) -->
+    <!-- Fifth section of the homepage listing all the actual features that GuardianLink provides both regular and NGO users (optional) -->
     <div>
     </div>
 
@@ -133,9 +133,9 @@
     <!-- Seventh and last section of the homepage showing the same simple call to action as the top of the page -->
     <div id="scrollspyHeading4" class="d-flex flex-column justify-content-center align-items-center gap-3 mt-5 p-5 bg-gradient rounded" style="background-color: purple">
         <h1 class="fs-0 text-center text-white">Ready to Join the GuardianLink Community?</h1>
-        <div class="grid column-gap-3">
-            <%= link_to "Join as Specialist", new_user_path(q: "user"), class: "btn btn-primary btn-lg me-5" %>
-            <%= link_to "Join as Business", new_user_path(q: "ngo" ), class: "btn btn-primary btn-lg" %>
+        <div class="row d-flex justify-content-center align-items-center">
+            <%= link_to "Join as Specialist", new_user_path(q: "user"), class: "btn btn-primary btn-lg col me-5 text-center" %>
+            <%= link_to "Join as Business", new_user_path(q: "ngo" ), class: "btn btn-primary col btn-lg text-center" %>
         </div>
     </div>
 
