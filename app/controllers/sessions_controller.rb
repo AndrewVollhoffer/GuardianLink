@@ -1,9 +1,5 @@
 class SessionsController < ApplicationController
 
-    # Force validation of cloudflare turnstile on user sign-in
-    before_action :validate_cloudflare_turnstile, only: [:create] if Rails.env.production?
-    rescue_from RailsCloudflareTurnstile::Forbidden, with: :failed_turnstile
-
     def new
     end
 
@@ -37,10 +33,5 @@ class SessionsController < ApplicationController
     end
 
     private
-
-    def failed_turnstile
-        flash[:alert] = "We had trouble creating your account. Please try again."
-        redirect_to root_path
-    end
 
 end
