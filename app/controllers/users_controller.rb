@@ -129,12 +129,6 @@ class UsersController < ApplicationController
       end
     end
 
-    def validate_cloudflare_turnstile
-      unless RailsCloudflareTurnstile.valid?(params[:cf-turnstile-response])
-        raise RailsCloudflareTurnstile::Forbidden
-      end
-    end
-
     def failed_turnstile
       flash[:alert] = "We had trouble creating your account. Please try again."
       redirect_to root_path
