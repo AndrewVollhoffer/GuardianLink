@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   before_action :authorize_user, only: [:update, :destroy ]
   # Allow only users that are signed in to access edit, update, and delete requests
   before_action :require_user_signed!, only: [:edit, :update, :destroy ]
+  # Force validation of cloudflare turnstile on user creation
+  before_action :validate_cloudflare_turnstile, only: [:create] if Rails.env.production?
+  rescue_from RailsCloudflareTurnstile::Forbidden, with: :failed_turnstile
 
   # GET /users or /users.json
   def index
@@ -126,4 +129,8 @@ class UsersController < ApplicationController
       end
     end
 
+    def failed_turnstile
+      flash[:alert] = "We had trouble creating your account. Please try again."
+      redirect_to root_path
+    end
 end

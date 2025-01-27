@@ -44,6 +44,9 @@ gem "bootsnap", require: false
 # Use resend for free and easy mail delivery
 gem "resend"
 
+# Cloudflare gem for turnstile
+gem 'rails_cloudflare_turnstile'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
